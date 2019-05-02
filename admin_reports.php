@@ -2,10 +2,6 @@
 
 
 
-
-
-
-
 $page_title = 'Admin Reports';
 include('staff_header.php');
 
