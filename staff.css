@@ -1,0 +1,325 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 980px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  max-width: 980px;
+  min-width: 500px;
+  /* width: 980px; */
+  height: 80px;
+  margin: 0 0 10px 0;
+  padding: 0;
+  background: #0055DD;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  padding: 5px;
+  font-size: 20px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+
+ul.menu {
+  max-width: 980px;
+  min-width: 500px;
+  /* width: 980px; */
+  margin: 0;
+  padding: 0;
+    display: inline;
+  list-style: none;
+  text-align: center;
+}
+
+/* ul.menu {
+  max-width: 980px;
+  min-width: 500px;
+  padding: 0;
+  margin: 0;
+}
+*/
+
+ul.menu li {
+  text-align: center;
+  display: inline;
+  margin-right: 1em;
+}
+
+#content {
+  max-width: 980px;
+  min-width: 500px;
+  /* width: 920px; */
+  min-height: 500px;
+  padding: 0 30px;
+}
+
+footer {
+  max-width: 980px;
+  min-width: 500px;
+  /* width: 940px; */
+  height: 75px;
+  margin: 25px 0 10px 0;
+  padding: 10px 20px;
+  background: #0055DD;
+  color: white;
+}
+
+
+/* Actions */
+
+.actions {
+  margin-bottom: 1em;
+}
+
+
+/* Lists */
+
+table {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+table.list {
+  max-width: 980px;
+  min-width: 500px;
+  /* width: 100%; */
+}
+
+table.list tr td {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  border: 1px solid #999999;
+}
+
+table.list tr th {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: 1px solid #0055DD;
+  background: #0055DD;
+  color: white;
+  text-align: left;
+  table-layout: fixed;
+  column-width: auto;
+}
+/* table.tbl_head {
+  width: 100%;
+} */
+
+table.tally_part_tbl tr td {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  /* padding-left: 1em;
+  padding-right: 1em; */
+  border: 1px solid #999999;
+  text-align:center;
+  font-size: 1em;
+}
+
+table.tally_part_tbl tr td:nth-child(3) {
+  column-width:10px;
+  padding-left: 0;
+  padding-right: 0;
+  border: 1px solid #999999;
+  text-align:center;
+  font-size: 1em;
+}
+
+input.qtyDisplay {
+  width: 3em;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0em;
+  padding-right: 0em;
+  border: 1px solid #999999;
+  text-align:center;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+table.tally_part_tbl tr th {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: 1px solid white;
+  background: grey;
+  color: white;
+  text-align: center;
+
+}
+
+table.sort_count th:first-child {
+  background: red;
+}
+table.sort_count th:nth-child(2) {
+  background: blue;
+}
+table.sort_count th:nth-child(3) {
+  background: yellow;
+  color: black;
+}
+table.sort_count th:nth-child(4) {
+  background: black;
+
+}
+table.sort_count th:nth-child(5) {
+  background: green;
+}
+
+.tbl_title {
+  max-width: 980px;
+  min-width: 500px;
+  /* width: 980px; */
+  height: 40px;
+  margin: 0 0 0 0;
+  padding: 0;
+  background: #0055DD;
+  color: white;
+  text-align: center;
+}
+
+/* Forms */
+
+dl {
+  clear: both;
+  overflow: hidden;
+  margin: 0.5em 0;
+}
+
+dt {
+  float: left;
+  font-weight: bold;
+  width: 150px;
+}
+
+dd {
+  float: left;
+  margin-left: 1em;
+}
+
+#operations {
+  clear: both;
+  margin: 1em 0 1em 75px;
+}
+
+/* Errors */
+
+.errors {
+  display: inline-block;
+  border: 2px solid red;
+  color: red;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.errors ul {
+  margin-bottom: 0;
+  padding-left: 1em;
+}
+
+.strong {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.redFont {
+  color: red;
+}
+
+figure {
+  display: inline-block;
+}
+
+#logo {
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submit_item {
+  font-size: 25px;
+
+}
+
+.qty {
+  max-width: 100px;
+}
+
+.clearFloat {
+  clear: both;
+}
+
+.sortDetail {
+  width: 100%
+
+}
+
+.cell_left {
+  text-align: left;
+  padding-left: .25em;
+  font-weight: bold;
+}
+
+.cell_right {
+  text-align: right;
+}
+
+.sortDetail tr td{
+  /* border: 1px solid red; */
+  width: 150px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: red;
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+tr.total {
+  background-color: lightgreen;
+}
