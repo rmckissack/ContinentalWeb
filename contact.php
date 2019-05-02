@@ -89,7 +89,7 @@ $telephone = e($_POST['telephone']);
 $subject = e($_POST['subject']);
 $message = e($_POST['message']);
 
-// message to user
+// email message to user
 echo "<p>Your message has been sent.</p>";
 echo "<p>Thank you for contacting us.</p>";
 
