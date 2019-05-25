@@ -4,8 +4,8 @@ function insert_tally_sheet($selected_lot_id, $selected_table, $date) {
   global $db;
 
 
-  $sql = "INSERT INTO TALLY ";
-  $sql .= "(LotId, table_num, TallyDate) ";
+  $sql = "INSERT INTO Tally ";
+  $sql .= "(lotId, tableNumber, tallyDate) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $selected_lot_id) . "', ";
   $sql .= "'" . db_escape($db, $selected_table) . "',";

@@ -1,7 +1,7 @@
 <?php
 $pageID = "home";
 $title = "Home Page";
-require("meta_queries.php");
+// require("meta_queries.php");
 require ("public_header.inc");
 
 

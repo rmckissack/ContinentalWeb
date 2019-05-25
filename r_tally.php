@@ -7,12 +7,12 @@ $parts_detail = find_all_parts();
 if(is_post_request()) {
 
   $tally_search = [];
-  $tally_search['startDate'] = e($_POST['startDate']);
-  $tally_search['endingDate'] = e($_POST['endingDate']);
-  $tally_search['lotNum'] = e($_POST['lotNum']);
-  $tally_search['partNum'] = e($_POST['partNum']);
-  $tally_search['table'] = e($_POST['table']);
-  $tally_search['complete'] = e($_POST['complete']);
+  $tally_search['startDate'] = e($_POST['startDate'] ?? '');
+  $tally_search['endingDate'] = e($_POST['endingDate'] ?? '');
+  $tally_search['lotNum'] = e($_POST['lotNum'] ?? '');
+  $tally_search['partNum'] = e($_POST['partNum'] ?? '');
+  $tally_search['table'] = e($_POST['table'] ?? '');
+  $tally_search['complete'] = e($_POST['complete'] ?? '');
   // echo $_POST['table'];
   // echo "here " . $tally_search['table'] . " to here";
   $result = search_tally_view($tally_search);

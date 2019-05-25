@@ -11,33 +11,39 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $date = date('now');
   // $date = strtotime($date);
     $new_LOT = [];
-    $new_LOT['LotNum'] = e($_POST['LotNum']);
-    $new_LOT['PartNum'] = e($_POST["PartNum"]);
-    $new_LOT['dueDate'] = e($_POST["dueDate"]);
-    $new_LOT['hotList'] = e($_POST["hotList"]);
-    $new_LOT['completed'] = e($_POST["completed"]);
-    if($new_LOT['dueDate'] == '') {
-      $new_LOT['dueDate'] = '0000-00-00';
-    }
+    $new_LOT['LotNum'] = e($_POST['LotNum'] ?? '');
+    $new_LOT['PartNum'] = e($_POST["PartNum"] ?? '');
+    $new_LOT['dueDate'] = e($_POST["dueDate"] ?? '0000-00-00');
+    $new_LOT['hotList'] = e($_POST["hotList"] ?? '');
+    $new_LOT['completed'] = e($_POST["completed"] ?? '');
+
+    // moved this test to trenart test
+    // if($new_LOT['dueDate'] == '') {
+    //   $new_LOT['dueDate'] = '0000-00-00';
+    // }
     $lotID = insert_LOT($new_LOT);
 
   $new_item = [];
-  $new_item['inboundBOL'] = e($_POST["inboundBOL"]);
-  $new_item['PartNum'] = e($_POST["PartNum"]);
+  $new_item['inboundBOL'] = e($_POST["inboundBOL"] ?? '');
+  $new_item['PartNum'] = e($_POST["PartNum"] ?? '');
   $new_item['LotId'] = $lotID;
-  $new_item['PoNum'] = e($_POST['PoNum']);
-  $new_item['QtyTubs'] = e($_POST['QtyTubs']);
-  $new_item['QtySkids'] = e($_POST['QtySkids']);
-  $new_item['QtyBoxes'] = e($_POST['QtyBoxes']);
-if($new_item['QtyTubs'] == '') {
-  $new_item['QtyTubs'] = '0';
-}
-if($new_item['QtySkids'] == '') {
-  $new_item['QtySkids'] = '0';
-}
-if($new_item['QtyBoxes'] == '') {
-  $new_item['QtyBoxes'] = '0';
-}
+  $new_item['PoNum'] = e($_POST['PoNum'] ?? '');
+  $new_item['QtyTubs'] = e($_POST['QtyTubs'] ?? '0');
+  $new_item['QtySkids'] = e($_POST['QtySkids'] ?? '0');
+  $new_item['QtyBoxes'] = e($_POST['QtyBoxes'] ?? '0');
+
+
+    // moved this test to trenart test
+
+  // if($new_item['QtyTubs'] == '') {
+//   $new_item['QtyTubs'] = '0';
+// }
+// if($new_item['QtySkids'] == '') {
+//   $new_item['QtySkids'] = '0';
+// }
+// if($new_item['QtyBoxes'] == '') {
+//   $new_item['QtyBoxes'] = '0';
+// }
 
 
 

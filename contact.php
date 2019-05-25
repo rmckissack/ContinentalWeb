@@ -7,7 +7,7 @@ $thisScript = htmlspecialchars($_SERVER['PHP_SELF']);
 $contactFirstName = "Leann";
 $contactLastName = "McKissack";
 $contactEmail = "randy@mckissack.net";
-require("meta_queries.php");
+// require("meta_queries.php");
 require ("public_header.inc");
 echo <<<HEREDOC
 <nav class="home">

@@ -5,7 +5,7 @@ require_once('f_initialize.php');
 function problem($message)
 {
   $pageID = "home";
-  require("meta_queries.php");
+  // require("meta_queries.php");
   require('public_header.inc');
   echo "<h1>It seems we have a problem</h1>\n";
   echo "<p>$message ";
@@ -72,7 +72,7 @@ die();
 
 $page_title = 'User Login';
 $pageID = "home";
-require("meta_queries.php");
+// require("meta_queries.php");
 include('public_header.inc');
 
 echo <<<HERELOGIN
