@@ -7,19 +7,19 @@ if(is_post_request()) {
 
   // Handle form values sent by new.php
 $update_employee=[];
-  $update_employee['EmployeeID'] = e($_POST['EmployeeID']);
-  $update_employee['LastName'] = e($_POST['LastName']);
-  $update_employee['FirstName'] = e($_POST['FirstName']);
-  $update_employee['HomePhone'] = e($_POST['HomePhone']);
-  $update_employee['CellPhone'] = e($_POST['CellPhone']);
-  $update_employee['Address'] = e($_POST['Address']);
-  $update_employee['City'] = e($_POST['City']);
-  $update_employee['State'] = e($_POST['State']);
-  $update_employee['Zip'] = e($_POST['Zip']);
-  $update_employee['StartDate'] = e($_POST['StartDate']);
-  $update_employee['EndDate'] = (e($_POST['EndDate'])) == "" ? '0000-00-00' : e($_POST['EndDate']);
-  $update_employee['WorkStatusID'] = e($_POST['WorkStatusID']);
-  $update_employee['dob'] = e($_POST['dob']);
+  $update_employee['employeeId'] = e($_POST['employeeId']);
+  $update_employee['lastName'] = e($_POST['lastName']);
+  $update_employee['firstName'] = e($_POST['firstName']);
+  $update_employee['homePhone'] = e($_POST['homePhone']);
+  $update_employee['cellPhone'] = e($_POST['cellPhone']);
+  $update_employee['address'] = e($_POST['address']);
+  $update_employee['city'] = e($_POST['city']);
+  $update_employee['state'] = e($_POST['state']);
+  $update_employee['zip'] = e($_POST['zip']);
+  $update_employee['startDate'] = e($_POST['startDate']);
+  $update_employee['endDate'] = (e($_POST['endDate'])) == "" ? '0000-00-00' : e($_POST['endDate']);
+  $update_employee['workStatusId'] = e($_POST['workStatusId']);
+  $update_employee['dateOfBirth'] = e($_POST['dateOfBirth']);
 
 $result = update_employee($update_employee);
 
@@ -45,64 +45,64 @@ if($_SESSION['level'] !="9") {
 
 
   <div class="page new">
-    <h1>Edit Details for <?php echo h($employeeDetail['LastName']) . ', ' . h($employeeDetail['FirstName']); ?></h1>
+    <h1>Edit Details for <?php echo h($employeeDetail['lastName']) . ', ' . h($employeeDetail['firstName']); ?></h1>
 
     <form action="<?php $thisScript; ?>" method="post" autocomplete="off">
       <dl>
         <dt>Employee ID</dt>
-        <dd><input type="text" name="EmployeeID" required value="<?php echo h($employeeDetail['EmployeeID']); ?>" readonly /></dd>
+        <dd><input type="text" name="employeeId" required value="<?php echo h($employeeDetail['employeeId']); ?>" readonly /></dd>
       </dl>
       <dl>
         <dt>Last Name</dt>
-        <dd><input type="text" name="LastName" value="<?php echo h($employeeDetail['LastName']); ?>" /></dd>
+        <dd><input type="text" name="lastName" value="<?php echo h($employeeDetail['lastName']); ?>" /></dd>
       </dl>
       <dl>
         <dt>First Name</dt>
-        <dd><input type="text" name="FirstName" value="<?php echo h($employeeDetail['FirstName']); ?>" /></dd>
+        <dd><input type="text" name="firstName" value="<?php echo h($employeeDetail['firstName']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Phone 1</dt>
-        <dd><input type="tel" pattern="[0-9]{3}[\-][0-9]{3}[\-][0-9]{4}" maxlength="12" placeholder="888-888-8888" name="CellPhone" value="<?php echo h($employeeDetail['CellPhone']); ?>" /></dd>
+        <dd><input type="tel" pattern="[0-9]{3}[\-][0-9]{3}[\-][0-9]{4}" maxlength="12" placeholder="888-888-8888" name="cellPhone" value="<?php echo h($employeeDetail['cellPhone']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Phone 2</dt>
-        <dd><input type="tel" pattern="[0-9]{3}[\-][0-9]{3}[\-][0-9]{4}" maxlength="12" placeholder="888-888-8888" name="HomePhone" value="<?php echo h($employeeDetail['HomePhone']); ?>" /></dd>
+        <dd><input type="tel" pattern="[0-9]{3}[\-][0-9]{3}[\-][0-9]{4}" maxlength="12" placeholder="888-888-8888" name="homePhone" value="<?php echo h($employeeDetail['homePhone']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Address</dt>
-        <dd><input type="text" name="Address" value="<?php echo h($employeeDetail['Address']); ?>" /></dd>
+        <dd><input type="text" name="address" value="<?php echo h($employeeDetail['address']); ?>" /></dd>
       </dl>
       <dl>
         <dt>City</dt>
-        <dd><input type="text" name="City" value="<?php echo h($employeeDetail['City']); ?>" /></dd>
+        <dd><input type="text" name="city" value="<?php echo h($employeeDetail['city']); ?>" /></dd>
       </dl>
       <dl>
         <dt>State</dt>
-        <dd><input type="text" name="State" value="<?php echo h($employeeDetail['State']); ?>" /></dd>
+        <dd><input type="text" name="state" value="<?php echo h($employeeDetail['state']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Zip</dt>
-        <dd><input type="text" name="Zip" value="<?php echo h($employeeDetail['Zip']); ?>" /></dd>
+        <dd><input type="text" name="zip" value="<?php echo h($employeeDetail['zip']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Start Date</dt>
-        <dd><input type="date" name="StartDate" value="<?php echo h($employeeDetail['StartDate']); ?>" /></dd>
+        <dd><input type="date" name="startDate" value="<?php echo h($employeeDetail['startDate']); ?>" /></dd>
       </dl>
       <dl>
         <dt>End Date</dt>
-        <dd><input type="date" name="EndDate" value="<?php echo h($employeeDetail['EndDate']); ?>" /></dd>
+        <dd><input type="date" name="endDate" value="<?php echo h($employeeDetail['endDate']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Work Status</dt>
         <dd>
-          <select required name="WorkStatusID">
+          <select required name="workStatusId">
             <option value="" disabled selected>- -Select Status- -</option>
             <?php
             while (($work = mysqli_fetch_assoc($workStatus)) !=null) {
-              echo "<option value ='" . h($work['WorkStatusID']) . "'";
-              if ($employeeDetail['WorkStatusID'] == $work['WorkStatusID'])
+              echo "<option value ='" . h($work['workStatusId']) . "'";
+              if ($employeeDetail['workStatusId'] == $work['workStatusId'])
                 echo "selected = 'selected'";
-                echo ">{$work['WorkStatus']}</option>";
+                echo ">{$work['workStatus']}</option>";
             }
             ?>
             </select>
@@ -112,7 +112,7 @@ if($_SESSION['level'] !="9") {
       <dl>
         <dt>Birthday</dt>
         <dd>
-          <input type="date" name="dob" value="<?php echo h($employeeDetail['dob']); ?>"/>
+          <input type="date" name="dateOfBirth" value="<?php echo h($employeeDetail['dateOfBirth']); ?>"/>
         </dd>
       </dl>
 

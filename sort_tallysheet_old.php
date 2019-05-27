@@ -12,7 +12,7 @@ $selected_table = $_GET['table'];
 
 $lot_info = find_by_lot_id($selected_lot); // this is what we will be sorting
 $employee_list = find_all_employees(); // get list of employees for drop down list
-$part_info = find_part_by_id($lot_info['PartNum']); // just so we can display part details
+$part_info = find_part_by_id($lot_info['partNumber']); // just so we can display part details
 $tally_info = find_tally_by_id($tally_id);
 ?>
 
@@ -40,13 +40,13 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
       <tr>
           <td>
-            <?php echo h($lot_info['LotNum']); ?>
+            <?php echo h($lot_info['lotNumber']); ?>
           </td>
           <td>
-            <?php echo h($lot_info['PartNum']); ?>
+            <?php echo h($lot_info['partNumber']); ?>
           </td>
           <td>
-            <?php echo h($part_info['Packaging']); ?>
+            <?php echo h($part_info['packaging']); ?>
           </td>
           <td>
             <?php echo h($part_info['perBox']); ?>
@@ -74,13 +74,13 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
                   <!-- Input fields for items -->
           <tr>
               <td>
-                <input type="text" id="mRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['Mutilation'] ?>" readonly style="border:0">
+                <input type="text" id="mRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['mutilation'] ?>" readonly style="border:0">
               </td>
               <td>
-                <input type="text" id="pRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['Plating'] ?>" readonly style="border:0">
+                <input type="text" id="pRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['plating'] ?>" readonly style="border:0">
               </td>
               <td>
-                <input type="text" id="xRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['Mixed'] ?>" readonly style="border:0">
+                <input type="text" id="xRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['mixed'] ?>" readonly style="border:0">
               </td>
               <td>
                 <input type="text" id="bRunningTotal" class="qtyDisplay" value="0" readonly style="border:0">
@@ -161,15 +161,15 @@ function dbUpdate (tally, char, inc) {
 
 
           // inserting updated qty value on page
-        if ('Mutilation' in returndObj) {
-          // console.log("Mutilation");
-          document.getElementById("mRunningTotal").value = returndObj.Mutilation;
-        } else if ('Plating' in returndObj) {
-          // console.log("Plating");
-          document.getElementById("pRunningTotal").value = returndObj.Plating;
-        } else if ('Mixed' in returndObj) {
-          // console.log("Mixed");
-          document.getElementById("xRunningTotal").value = returndObj.Mixed;
+        if ('mutilation' in returndObj) {
+          // console.log("mutilation");
+          document.getElementById("mRunningTotal").value = returndObj.mutilation;
+        } else if ('plating' in returndObj) {
+          // console.log("plating");
+          document.getElementById("pRunningTotal").value = returndObj.plating;
+        } else if ('mixed' in returndObj) {
+          // console.log("mixed");
+          document.getElementById("xRunningTotal").value = returndObj.mixed;
         } else {
           alert ("There was a problem with updating quantities");
         }

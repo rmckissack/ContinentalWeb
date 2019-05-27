@@ -5,16 +5,16 @@ require_once('f_initialize.php');
 if(is_post_request()) {
 
   $in_item_update = [];
-  $in_item_update['inItemID'] = e($_POST['inItemID']);
-  $in_item_update['PoNum'] = e($_POST['PoNum']);
-  $in_item_update['QtyTubs'] = e($_POST['QtyTubs']);
-  $in_item_update['QtySkids'] = e($_POST['QtySkids']);
-  $in_item_update['QtyBoxes'] = e($_POST['QtyBoxes']);
+  $in_item_update['inItemId'] = e($_POST['inItemId']);
+  $in_item_update['poNumber'] = e($_POST['poNumber']);
+  $in_item_update['quantityOfTubs'] = e($_POST['quantityOfTubs']);
+  $in_item_update['quantityOfSkids'] = e($_POST['quantityOfSkids']);
+  $in_item_update['quantityOfBoxes'] = e($_POST['quantityOfBoxes']);
 
   $lot_update = [];
-  $lot_update['LotId'] = e($_POST['LotId']);
-  $lot_update['LotNum'] = e($_POST['LotNum']);
-  $lot_update['PartNum'] = e($_POST['PartNum']);
+  $lot_update['lotId'] = e($_POST['lotId']);
+  $lot_update['lotNumber'] = e($_POST['lotNumber']);
+  $lot_update['partNumber'] = e($_POST['partNumber']);
   $lot_update['dueDate'] = e($_POST['dueDate']);
   $lot_update['hotList'] = e($_POST['hotList']);
   $lot_update['completed'] = e($_POST['completed']);
@@ -32,12 +32,12 @@ if(is_post_request()) {
   }
 
   $inboundBOL = $_GET['id'];
-  $LotNum = $_GET['lot'];
-// echo $inboundBOL . " and " . $LotNum . "were received      ";
+  $lotNumber = $_GET['lot'];
+// echo $inboundBOL . " and " . $lotNumber . "were received      ";
 // $inbound_head = find_inbound_by_bol($inboundBOL);
 }
 
-$item_set = find_inbound_items_by_BOL_and_lot($inboundBOL, $LotNum);
+$item_set = find_inbound_items_by_BOL_and_lot($inboundBOL, $lotNumber);
 ?>
 
 <?php $page_title = 'Edit Inbound Item'; ?>
@@ -52,38 +52,38 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
 
     <div class="page new">
-    <h1 class="redFont">Editing Lot# <?php echo h($item_set['LotNum']); ?></h1>
+    <h1 class="redFont">Editing Lot# <?php echo h($item_set['lotNumber']); ?></h1>
     <h2>This Lot is on inbound BOL# <?php echo h($inboundBOL); ?></h2>
   <form action="<?php $thisScript; ?>" method="post" autocomplete="off">
 
       <!-- this input for BOL is just to pass the current bol to next page inside post request -->
     <input type="hidden" id="inboundBOL" name="inboundBOL" value="<?php echo $inboundBOL; ?>"/>
-    <input type="hidden" id="inItemID" name="inItemID" value="<?php echo $item_set['inItemID']; ?>"/>
-    <input type="hidden" id="LotId" name="LotId" value="<?php echo $item_set['LotId']; ?>"/>
+    <input type="hidden" id="inItemId" name="inItemId" value="<?php echo $item_set['inItemId']; ?>"/>
+    <input type="hidden" id="lotId" name="lotId" value="<?php echo $item_set['lotId']; ?>"/>
 
     <dl>
       <dt>Part Number:</dt>
-      <dd><input type="text" id="PartNum" name="PartNum" value="<?php echo h($item_set['PartNum']); ?>"/></dd>
+      <dd><input type="text" id="partNumber" name="partNumber" value="<?php echo h($item_set['partNumber']); ?>"/></dd>
     </dl>
     <dl>
       <dt>Lot Number:</dt>
-      <dd><input type="text" id="LotNum" name="LotNum" value="<?php echo h($item_set['LotNum']); ?>"/></dd>
+      <dd><input type="text" id="lotNumber" name="lotNumber" value="<?php echo h($item_set['lotNumber']); ?>"/></dd>
     </dl>
     <dl>
       <dt>PO Number:</dt>
-      <dd><input type="text" id="PoNum" name="PoNum" value="<?php echo h($item_set['PoNum']); ?>"/></dd>
+      <dd><input type="text" id="poNumber" name="poNumber" value="<?php echo h($item_set['poNumber']); ?>"/></dd>
     </dl>
     <dl>
       <dt>Quantity of Tubs:</dt>
-      <dd><input type="text" id="QtyTubs" name="QtyTubs" value="<?php echo h($item_set['QtyTubs']); ?>"/></dd>
+      <dd><input type="text" id="quantityOfTubs" name="quantityOfTubs" value="<?php echo h($item_set['quantityOfTubs']); ?>"/></dd>
     </dl>
     <dl>
       <dt>Quantity of Skids:</dt>
-      <dd><input type="text" id="QtySkids" name="QtySkids" value="<?php echo h($item_set['QtySkids']); ?>"/></dd>
+      <dd><input type="text" id="quantityOfSkids" name="quantityOfSkids" value="<?php echo h($item_set['quantityOfSkids']); ?>"/></dd>
     </dl>
     <dl>
       <dt>Quantity of Boxes:</dt>
-      <dd><input type="text" id="QtyBoxes" name="QtyBoxes" value="<?php echo h($item_set['QtyBoxes']); ?>"/></dd>
+      <dd><input type="text" id="quantityOfBoxes" name="quantityOfBoxes" value="<?php echo h($item_set['quantityOfBoxes']); ?>"/></dd>
     </dl>
     <dl>
       <dt>Due Date:</dt>

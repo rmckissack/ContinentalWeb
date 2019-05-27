@@ -5,15 +5,15 @@ require_once('f_initialize.php');
 if(is_post_request()) {
 
   $inbound = [];
-  $inbound['InDate'] = e($_POST['InDate']);
+  $inbound['inDate'] = e($_POST['inDate']);
   $inbound['inboundBOL'] = e($_POST['inboundBOL']);
-  $inbound['TripNum'] = e($_POST['TripNum']);
-  $inbound['Note'] = e($_POST['Note']);
+  $inbound['tripNumber'] = e($_POST['tripNumber']);
+  $inbound['note'] = e($_POST['note']);
 
   $result = update_inbound($inbound);
   //$new_id = mysqli_insert_id($db);
   // $new_id = $inbound['inboundBOL'];
-  // $Date_id = $inbound['InDate'];
+  // $Date_id = $inbound['inDate'];
   redirect_to('in_show_inbound_detail.php?id=' . $inbound['inboundBOL']);
 
 } else {
@@ -43,7 +43,7 @@ $item_set = find_inbound_items_by_bol($inboundBOL);
 
     <dl>
       <dt>Date</dt>
-      <dd><input type="date" id="date" name="InDate" value="<?php echo h($inbound_head['InDate']); ?>"/></dd>
+      <dd><input type="date" id="date" name="inDate" value="<?php echo h($inbound_head['inDate']); ?>"/></dd>
     </dl>
     <dl>
       <dt>Inbound BOL</dt>
@@ -52,11 +52,11 @@ $item_set = find_inbound_items_by_bol($inboundBOL);
     <dl>
       <dt>Trip Number</dt>
       <dd>
-        <select name="TripNum">
+        <select name="TriptripNumberNum">
           <?php
             for($i=1; $i <= 4; $i++) {
               echo "<option value=\"{$i}\"";
-              if($inbound_head["TripNum"] == $i) {
+              if($inbound_head["tripNumber"] == $i) {
                 echo " selected";
               }
               echo ">{$i}</option>";
@@ -68,7 +68,7 @@ $item_set = find_inbound_items_by_bol($inboundBOL);
     <dl>
       <dt>Note</dt>
       <dd>
-        <textarea name="Note" row="4" cols="50"><?php echo h($inbound_head['Note']); ?></textarea>
+        <textarea name="note" row="4" cols="50"><?php echo h($inbound_head['note']); ?></textarea>
       </dd>
     </dl>
 
@@ -103,16 +103,16 @@ $item_set = find_inbound_items_by_bol($inboundBOL);
 
       <?php while($item = mysqli_fetch_assoc($item_set)) { ?>
         <tr>
-          <td><?php echo h($item['PartNum']); ?></td>
-          <td><?php echo h($item['LotNum']); ?></td>
-          <td><?php echo h($item['PoNum']); ?></td>
-          <td><?php echo h($item['QtyTubs']); ?></td>
-          <td><?php echo h($item['QtySkids']); ?></td>
-          <td><?php echo h($item['QtyBoxes']); ?></td>
+          <td><?php echo h($item['partNumber']); ?></td>
+          <td><?php echo h($item['lotNumber']); ?></td>
+          <td><?php echo h($item['poNumber']); ?></td>
+          <td><?php echo h($item['quantityOfTubs']); ?></td>
+          <td><?php echo h($item['quantityOfSkids']); ?></td>
+          <td><?php echo h($item['quantityOfBoxes']); ?></td>
           <td><?php echo h($item['dueDate']) == '0000-00-00' ? '' : h($item['dueDate']) ; ?></td>
           <td><?php echo h($item['hotList']) == '1' ? '<img src="images/hot.png" alt="Hot List" style="width:40px;height:40px;" ' : ''; ?></td>
           <td><?php echo h($item['completed']) == '1' ? '<img src="images/Approve_icon.svg" alt="Completed" style="width:35px;height:35px;"' : ''; ?></td>
-          <td><a class="action" href="<?php echo 'in_edit_item.php?id=' . h(u($item['inboundBOL'])) . '&lot=' . h(u($item['LotNum'])); ?>">Edit</a></td>
+          <td><a class="action" href="<?php echo 'in_edit_item.php?id=' . h(u($item['inboundBOL'])) . '&lot=' . h(u($item['lotNumber'])); ?>">Edit</a></td>
                   </tr>
       <?php } ?>
     </table>

@@ -10,7 +10,7 @@ if(is_post_request()) {
   $tally_search['startDate'] = e($_POST['startDate'] ?? '');
   $tally_search['endingDate'] = e($_POST['endingDate'] ?? '');
   $tally_search['lotNum'] = e($_POST['lotNum'] ?? '');
-  $tally_search['partNum'] = e($_POST['partNum'] ?? '');
+  $tally_search['partNumber'] = e($_POST['partNumber'] ?? '');
   $tally_search['table'] = e($_POST['table'] ?? '');
   $tally_search['complete'] = e($_POST['complete'] ?? '');
   // echo $_POST['table'];
@@ -24,7 +24,7 @@ if(is_post_request()) {
   $tally_lookup['startDate'] = '';
   $tally_lookup['endingDate'] = '';
   $tally_lookup['lotNum'] = '';
-  $tally_lookup['partNum'] = '';
+  $tally_lookup['partNumber'] = '';
   $tally_lookup['table'] = '';
 
   // $inbound_set = find_all_inbound();
@@ -66,7 +66,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
       </dl>
       <dl>
         <dt>Part Number</dt>
-        <dd><input type="text" id="partNum" name="partNum" /></dd>
+        <dd><input type="text" id="partNumber" name="partNumber" /></dd>
       </dl>
       <dl>
         <dt>Table Number</dt>
@@ -75,7 +75,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
    <option value="" disabled selected>- Select -</option>
 
    <?php while($table = mysqli_fetch_assoc($table_list)) { ?>
-   <option value="<?php echo h($table['table_num']); ?>"><?php echo h($table['table_num']); ?></option>
+   <option value="<?php echo h($table['tableNumber']); ?>"><?php echo h($table['tableNumber']); ?></option>
    <?php } ?>
           </select>
           </dd>
@@ -95,7 +95,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
       <!-- <dl>
         <dt>Trip Number</dt>
         <dd>
-          <select name="TripNum">
+          <select name="tripNumber">
             <option value="1" selected>1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -150,31 +150,31 @@ echo "    </tr>";
 
           while($item = mysqli_fetch_assoc($result)) {
 echo "      <tr>";
-echo "        <td>" . h($item['Part']) . "</td>";
-echo "        <td>" . h($item['Lot']) . "</td>";
-echo "        <td>" . h($item['PO']) . "</td>";
-echo "        <td>" . h($item['Tally_ID']) . "</td>";
-echo "        <td>" . h($item['table_num']) . "</td>";
-echo "        <td>" . h($item['Tally_Date']) . "</td>";
-echo "        <td>" . h($item['Tubs_Received']) . "</td>";
-echo "        <td>" . h($item['Mutilatoion']) . "</td>";
-echo "        <td>" . h($item['Plating']) . "</td>";
-echo "        <td>" . h($item['Mixed']) . "</td>";
-echo "        <td>" . h($item['Overflow']) . "</td>";
-echo "        <td>" . h($item['Boxes']) . "</td>";
-echo "        <td>" . h($item['Completed'] == '1' ? 'Y' : 'N') . "</td>";
-echo "        <td>" . h($item['Boxes'] * $item['PerBox']) . "</td>";
-echo "        <td>" . h($item['Boxes'] * $item['PerBox'] + $item['Mutilatoion'] + $item['Plating'] + $item['Mixed']) . "</td>";
+echo "        <td>" . h($item['partNumber']) . "</td>";
+echo "        <td>" . h($item['lotNumber']) . "</td>";
+echo "        <td>" . h($item['poNumber']) . "</td>";
+echo "        <td>" . h($item['tallyId']) . "</td>";
+echo "        <td>" . h($item['tableNumber']) . "</td>";
+echo "        <td>" . h($item['tallyDate']) . "</td>";
+echo "        <td>" . h($item['tubsReceived']) . "</td>";
+echo "        <td>" . h($item['mutilatoion']) . "</td>";
+echo "        <td>" . h($item['plating']) . "</td>";
+echo "        <td>" . h($item['mixed']) . "</td>";
+echo "        <td>" . h($item['overflow']) . "</td>";
+echo "        <td>" . h($item['boxes']) . "</td>";
+echo "        <td>" . h($item['completed'] == '1' ? 'Y' : 'N') . "</td>";
+echo "        <td>" . h($item['boxes'] * $item['perBox']) . "</td>";
+echo "        <td>" . h($item['boxes'] * $item['perBox'] + $item['mutilatoion'] + $item['plating'] + $item['mixed']) . "</td>";
 echo "      </tr>";
 
-$mutilationTotal = $mutilationTotal + (int)$item['Mutilatoion'];
-$platingTotal = $platingTotal + (int)$item['Plating'];
-$mixedTotal = $mixedTotal + (int)$item['Mixed'];
-$overFlowTotal = $overFlowTotal + (int)$item['Overflow'];
-$boxesTotal = $boxesTotal + (int)$item['Boxes'];
-$completedtotal = $completedtotal + (int)$item['Completed'];
-$goodPartsTotal = $goodPartsTotal + (int)$item['Boxes'] * (int)$item['PerBox'];
-$partsTotal = $partsTotal + (((int)$item['Boxes'] * (int)$item['PerBox']) + (int)$item['Mutilatoion'] + (int)$item['Plating'] + (int)$item['Mixed']);
+$mutilationTotal = $mutilationTotal + (int)$item['mutilatoion'];
+$platingTotal = $platingTotal + (int)$item['plating'];
+$mixedTotal = $mixedTotal + (int)$item['mixed'];
+$overFlowTotal = $overFlowTotal + (int)$item['overflow'];
+$boxesTotal = $boxesTotal + (int)$item['boxes'];
+$completedtotal = $completedtotal + (int)$item['completed'];
+$goodPartsTotal = $goodPartsTotal + (int)$item['boxes'] * (int)$item['perBox'];
+$partsTotal = $partsTotal + (((int)$item['boxes'] * (int)$item['perBox']) + (int)$item['mutilatoion'] + (int)$item['plating'] + (int)$item['mixed']);
 $tallyTotal++;
 // $tubsTotal = $tubsTotal + (int)$item['Tubs_Received'];
 

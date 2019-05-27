@@ -8,36 +8,36 @@ if(is_post_request()) {
 
   // Handle form values sent by new.php
 $new_part=[];
-  $new_part['PartNum'] = e($_POST['PartNum']);
-  $new_part['Description'] = e($_POST['Description']);
-  $new_part['Packaging'] = e($_POST['Packaging']);
+  $new_part['partNumber'] = e($_POST['partNumber']);
+  $new_part['description'] = e($_POST['description']);
+  $new_part['packaging'] = e($_POST['packaging']);
   $new_part['perBox'] = e($_POST['perBox']);
   $new_part['perSkid'] = e($_POST['perSkid']);
-  $new_part['WeightClass'] = e($_POST['WeightClass']);
-  $new_part['PiecePrice'] = e($_POST['PiecePrice']);
-  $new_part['Mutilation'] = e($_POST['Mutilation']);
-  $new_part['Plating'] = e($_POST['Plating']);
-  $new_part['Mixed'] = e($_POST['Mixed']);
-  $new_part['NoGo'] = e($_POST['NoGo']);
+  $new_part['weightClass'] = e($_POST['weightClass']);
+  $new_part['piecePrice'] = e($_POST['piecePrice']);
+  $new_part['mutilation'] = e($_POST['mutilation']);
+  $new_part['plating'] = e($_POST['plating']);
+  $new_part['mixed'] = e($_POST['mixed']);
+  $new_part['noGo'] = e($_POST['noGo']);
   $new_part['boxOnly'] = e($_POST['boxOnly']);
   $new_part['comments'] = e($_POST['comments']);
 
 $result = insert_part($new_part);
 
-  redirect_to('parts_show.php?PartNum=' . $new_part['PartNum']);
+  redirect_to('parts_show.php?partNumber=' . $new_part['partNumber']);
 } else {
 
-  $PartNum = '';
-  $Description = '';
-  $Packaging = '';
+  $partNumber = '';
+  $description = '';
+  $packaging = '';
   $perBox = '';
   $perSkid = '';
-  $WeightClass = '';
-  $PiecePrice = '';
-  $Mutilation = '0';
-  $Plating = '0';
-  $Mixed = '0';
-  $NoGo = '0';
+  $weightClass = '';
+  $piecePrice = '';
+  $mutilation = '0';
+  $plating = '0';
+  $mixed = '0';
+  $noGo = '0';
   $boxOnly = '0';
   $comments = '';
 
@@ -63,16 +63,16 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
     <form action="<?php $thisScript; ?>" method="post" autocomplete="off">
       <dl>
         <dt>Part Number</dt>
-        <dd><input type="text" name="PartNum" required value="<?php echo h($PartNum); ?>" /></dd>
+        <dd><input type="text" name="partNumber" required value="<?php echo h($partNumber); ?>" /></dd>
       </dl>
       <dl>
         <dt>Part Description</dt>
-        <dd><input type="text" name="Description" value="<?php echo h($Description); ?>" /></dd>
+        <dd><input type="text" name="description" value="<?php echo h($description); ?>" /></dd>
       </dl>
       <dl>
         <dt>Packaging</dt>
         <dd>
-          <select name="Packaging">
+          <select name="packaging">
             <option selected disabled value="">-Select Packaging-</option>
             <?php while($box = mysqli_fetch_assoc($boxes)) { ?>
               <option value=<?php echo h($box['box']); ?>><?php echo h($box['box']); ?></option>
@@ -95,34 +95,34 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
       <dl>
         <dt>Weight Class</dt>
         <dd>
-          <input type="number" name="WeightClass"/>
+          <input type="number" name="weightClass"/>
         </dd>
       </dl>
       <dl>
         <dt>Piece Price $</dt>
         <dd>
-          <input type="number" min="0.00000" max="100.00000" step=".00001" name="PiecePrice"/>
+          <input type="number" min="0.00000" max="100.00000" step=".00001" name="piecePrice"/>
         </dd>
       </dl>
       <dl>
         <dt>Mutilation</dt>
-        <dd><input type="hidden" id="Mutilation" name="Mutilation" value="0"/>
-          <input type="checkbox" id="Mutilation" name="Mutilation" value="1"/></dd>
+        <dd><input type="hidden" id="mutilation" name="mutilation" value="0"/>
+          <input type="checkbox" id="mutilation" name="mutilation" value="1"/></dd>
       </dl>
       <dl>
         <dt>Plating</dt>
-        <dd><input type="hidden" id="Plating" name="Plating" value="0"/>
-          <input type="checkbox" id="Plating" name="Plating" value="1"/></dd>
+        <dd><input type="hidden" id="plating" name="plating" value="0"/>
+          <input type="checkbox" id="plating" name="plating" value="1"/></dd>
       </dl>
       <dl>
         <dt>Mixed</dt>
-        <dd><input type="hidden" id="Mixed" name="Mixed" value="0"/>
-          <input type="checkbox" id="Mixed" name="Mixed" value="1"/></dd>
+        <dd><input type="hidden" id="mixed" name="mixed" value="0"/>
+          <input type="checkbox" id="mixed" name="mixed" value="1"/></dd>
       </dl>
       <dl>
         <dt>NoGo</dt>
-        <dd><input type="hidden" id="NoGo" name="NoGo" value="0"/>
-          <input type="checkbox" id="NoGo" name="NoGo" value="1"/></dd>
+        <dd><input type="hidden" id="noGo" name="noGo" value="0"/>
+          <input type="checkbox" id="noGo" name="noGo" value="1"/></dd>
       </dl>
       <dl>
         <dt>Box Only</dt>

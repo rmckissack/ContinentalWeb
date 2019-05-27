@@ -11,12 +11,12 @@
 
   <?php while($item = mysqli_fetch_assoc($item_set)) { ?>
     <tr>
-      <!--<td><?php echo h($item['InDate']); ?></td>-->
-      <td><?php echo h($item['PartNum']); ?></td>
-      <td><?php echo h($item['LotNum']); ?></td>
-      <td><?php echo h($item['QtyTubs']); ?></td>
-      <td><?php echo h($item['QtySkids']); ?></td>
-      <td><?php echo h($item['QtyBoxes']); ?></td>
+      <!--<td><?php echo h($item['inDate']); ?></td>-->
+      <td><?php echo h($item['partNumber']); ?></td>
+      <td><?php echo h($item['lotNumber']); ?></td>
+      <td><?php echo h($item['quantityOfTubs']); ?></td>
+      <td><?php echo h($item['quantityOfSkids']); ?></td>
+      <td><?php echo h($item['quantityOfBoxes']); ?></td>
     </tr>
   <?php } ?>
 

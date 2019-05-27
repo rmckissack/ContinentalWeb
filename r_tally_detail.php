@@ -26,19 +26,19 @@ include('staff_header.php');
 
     <?php while($item = mysqli_fetch_assoc($item_set)) { ?>
       <tr>
-        <td><?php echo h($item['Part']); ?></td>
-        <td><?php echo h($item['Lot']); ?></td>
-        <td><?php echo h($item['PO']); ?></td>
-        <td><?php echo h($item['Tally_ID']); ?></td>
-        <td><?php echo h($item['Tally_Date']); ?></td>
-        <td><?php echo h($item['Tub_Complete']); ?></td>
-        <td><?php echo h($item['Tubs_Received']); ?></td>
-        <td><?php echo h($item['Mutilatoion']); ?></td>
-        <td><?php echo h($item['Plating']); ?></td>
-        <td><?php echo h($item['Mixed']); ?></td>
-        <td><?php echo h($item['Overflow']); ?></td>
-        <td><?php echo h($item['Boxes']); ?></td>
-        <td><?php echo h($item['Completed']) == '1' ? 'Y' : 'N'; ?></td>
+        <td><?php echo h($item['partNumber']); ?></td>
+        <td><?php echo h($item['lotNumber']); ?></td>
+        <td><?php echo h($item['poNumber']); ?></td>
+        <td><?php echo h($item['tallyId']); ?></td>
+        <td><?php echo h($item['tallyDate']); ?></td>
+        <td><?php echo h($item['tubComplete']); ?></td>
+        <td><?php echo h($item['tubsReceived']); ?></td>
+        <td><?php echo h($item['mutilatoion']); ?></td>
+        <td><?php echo h($item['plating']); ?></td>
+        <td><?php echo h($item['mixed']); ?></td>
+        <td><?php echo h($item['overflow']); ?></td>
+        <td><?php echo h($item['boxes']); ?></td>
+        <td><?php echo h($item['completed']) == '1' ? 'Y' : 'N'; ?></td>
       </tr>
 
     <?php } ?>

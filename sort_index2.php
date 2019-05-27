@@ -39,8 +39,8 @@ if (isset($_GET['id'])) {
 
    <?php while($lot = mysqli_fetch_assoc($lot_set)) { ?>
      <tr>
-       <td><a class="action" href="<?php echo 'sort_index2.php?id=' . h(u($lot['LotId'])) . '&table=' . h(u($table_number)); ?>"><?php echo h($lot['LotNum']); ?></a></td>
-       <td><a class="action" href="<?php echo 'sort_index2.php?id=' . h(u($lot['LotId'])) . '&table=' . h(u($table_number)); ?>"><?php echo h($lot['PartNum']); ?></a></td>
+       <td><a class="action" href="<?php echo 'sort_index2.php?id=' . h(u($lot['lotId'])) . '&table=' . h(u($table_number)); ?>"><?php echo h($lot['lotNumber']); ?></a></td>
+       <td><a class="action" href="<?php echo 'sort_index2.php?id=' . h(u($lot['lotId'])) . '&table=' . h(u($table_number)); ?>"><?php echo h($lot['partNumber']); ?></a></td>
        <td><?php echo h($lot['hotList']) == '1' ? '<img src="images/hot.png" alt="Hot" style="width:40px;height:40px;"> ' : ''; ?></td>
      </tr>
    <?php } ?>

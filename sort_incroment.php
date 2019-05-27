@@ -7,13 +7,13 @@ $incroment = e($_POST['incroment']);
 
 switch ($charCode) {
   case 109:
-    $category = "Mutilation";
+    $category = "mutilation";
     break;
   case 112:
-    $category = "Plating";
+    $category = "plating";
     break;
   case 120:
-    $category = "Mixed";
+    $category = "mixed";
     break;
 
   default:
@@ -24,7 +24,7 @@ global $db;
 
   $sql = "UPDATE TALLY SET ";
   $sql .= $category . "= " . $category . " +" . $incroment;
-  $sql .= " WHERE TallyID= " . $tallyId;
+  $sql .= " WHERE tallyId= " . $tallyId;
   $result = mysqli_query($db, $sql);
   // For UPDATE statements, $result is true/false
   if($result) {

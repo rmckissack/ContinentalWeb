@@ -6,8 +6,8 @@ $dateTime = date('Y-m-d H:i:s');
 
 global $db;
 
-  $sql = "INSERT INTO BOX_COUNT ";
-  $sql .= "(tallyID, boxTime) ";
+  $sql = "INSERT INTO BoxCount ";
+  $sql .= "(tallyId, boxTime) ";
   $sql .= "VALUES (" . $tallyId . ", now());";
   $result = mysqli_query($db, $sql);
   // For UPDATE statements, $result is true/false

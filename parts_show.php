@@ -2,22 +2,22 @@
 
 <?php
 
-// $id = isset($_GET['PartNum']) ? $_GET['PartNum'] : '1';
-$partNum = $_GET['PartNum'];
+// $id = isset($_GET['partNumber']) ? $_GET['partNumber'] : '1';
+$partNumber = $_GET['partNumber'];
 
-$partDetailSet = find_part_by_id($partNum);
+$partDetailSet = find_part_by_id($partNumber);
 // $partDetail = [];
 // while($partDetail = mysqli_fetch_assoc($partResult)) {
 //   echo '<tr>';
-//     echo '<td>' . h($partDetail['PartNum']) .'</td>';
-//     echo '<td>' . h($partDetail['Description']) .'</td>';
-//     echo '<td>' . h($partDetail['Packaging']) .'</td>';
-//     echo '<td>' . h($partDetail['WeightClass']) .'</td>';
-//     echo '<td>' . h($partDetail['PiecePrice']) .'</td>';
-//     echo '<td>' . h($partDetail['Mutilation']) .'</td>';
-//     echo '<td>' . h($partDetail['Plating']) .'</td>';
-//     echo '<td>' . h($partDetail['Mixed']) .'</td>';
-//     echo '<td>' . h($partDetail['NoGo']) .'</td>';
+//     echo '<td>' . h($partDetail['partNumber']) .'</td>';
+//     echo '<td>' . h($partDetail['description']) .'</td>';
+//     echo '<td>' . h($partDetail['packaging']) .'</td>';
+//     echo '<td>' . h($partDetail['weightClass']) .'</td>';
+//     echo '<td>' . h($partDetail['piecePrice']) .'</td>';
+//     echo '<td>' . h($partDetail['mutilation']) .'</td>';
+//     echo '<td>' . h($partDetail['plating']) .'</td>';
+//     echo '<td>' . h($partDetail['mixed']) .'</td>';
+//     echo '<td>' . h($partDetail['noGo']) .'</td>';
 //   echo '</tr>';
 // }
 
@@ -30,26 +30,26 @@ $partDetailSet = find_part_by_id($partNum);
 if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
   header("Location: noaccess.php");
 }
-$photos = find_part_photos($partNum);
+$photos = find_part_photos($partNumber);
 ?>
 
 
 
   <div class="page show">
-    <h1>Part Number <?php echo h($partNum); ?> Details</h1>
+    <h1>Part Number <?php echo h($partNumber); ?> Details</h1>
 
 
     <dl>
       <dt>Part Number</dt>
-      <dd><?php echo h($partDetailSet['PartNum']); ?></dd>
+      <dd><?php echo h($partDetailSet['partNumber']); ?></dd>
     </dl>
     <dl>
       <dt>Description</dt>
-      <dd><?php echo h($partDetailSet['Description']); ?></dd>
+      <dd><?php echo h($partDetailSet['description']); ?></dd>
     </dl>
     <dl>
       <dt>Packaging</dt>
-      <dd><?php echo h($partDetailSet['Packaging']); ?></dd>
+      <dd><?php echo h($partDetailSet['packaging']); ?></dd>
     </dl>
     <dl>
       <dt>Pieces Per Box</dt>
@@ -61,27 +61,27 @@ $photos = find_part_photos($partNum);
     </dl>
     <dl>
       <dt>Weight Class</dt>
-      <dd><?php echo h($partDetailSet['WeightClass']); ?></dd>
+      <dd><?php echo h($partDetailSet['weightClass']); ?></dd>
     </dl>
     <dl>
       <dt>Piece Price $</dt>
-      <dd><?php echo h($partDetailSet['PiecePrice']); ?></dd>
+      <dd><?php echo h($partDetailSet['piecePrice']); ?></dd>
     </dl>
     <dl>
       <dt>Mutilation</dt>
-      <dd><input type="checkbox" <?php echo h($partDetailSet['Mutilation']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
+      <dd><input type="checkbox" <?php echo h($partDetailSet['mutilation']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
     </dl>
     <dl>
       <dt>Plating</dt>
-      <dd><input type="checkbox" <?php echo h($partDetailSet['Plating']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
+      <dd><input type="checkbox" <?php echo h($partDetailSet['plating']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
     </dl>
     <dl>
       <dt>Mixed</dt>
-      <dd><input type="checkbox" <?php echo h($partDetailSet['Mixed']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
+      <dd><input type="checkbox" <?php echo h($partDetailSet['mixed']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
     </dl>
     <dl>
       <dt>NoGo</dt>
-      <dd><input type="checkbox" <?php echo h($partDetailSet['NoGo']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
+      <dd><input type="checkbox" <?php echo h($partDetailSet['noGo']) == '1' ? 'checked' : ''; ?> value="1" onclick="return false;"/></dd>
     </dl>
     <dl>
       <dt>Box Only</dt>

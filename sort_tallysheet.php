@@ -26,9 +26,9 @@ if(is_post_request()) {
 
 $lot_info = find_by_lot_id($selected_lot); // this is what we will be sorting
 $employee_list = find_all_employees(); // get list of employees for drop down list
-$part_info = find_part_by_id($lot_info['PartNum']); // just so we can display part details
+$part_info = find_part_by_id($lot_info['partNumber']); // just so we can display part details
 $tally_info = find_tally_by_id($tally_id);
-$photos = find_part_photos($lot_info['PartNum']);
+$photos = find_part_photos($lot_info['partNumber']);
 $total_boxes = find_box_qty($tally_id);
 $tally_sorter_time = employee_tally_list($tally_id);
 $time_id_list = [];
@@ -56,13 +56,13 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
         Part #:
       </td>
       <td class="cell_left">
-        <?php echo h($lot_info['PartNum']); ?>
+        <?php echo h($lot_info['partNumber']); ?>
       </td>
       <td class="cell_right">
         Box Size:
       </td>
       <td class="cell_left">
-        <?php echo h($part_info['Packaging']); ?>
+        <?php echo h($part_info['packaging']); ?>
       </td>
       <td class="cell_right">
         Total Good:
@@ -82,7 +82,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
         Lot #:
       </td>
       <td class="cell_left">
-        <?php echo h($lot_info['LotNum']); ?>
+        <?php echo h($lot_info['lotNumber']); ?>
       </td>
       <td class="cell_right">
         Parts-Box:
@@ -108,7 +108,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
         PO #:
       </td>
       <td class="cell_left">
-        <?php echo h($lot_info['PoNum']); ?>
+        <?php echo h($lot_info['poNumber']); ?>
       </td>
       <td class="cell_right">
         Boxes-Skid:
@@ -126,7 +126,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
         Date:
       </td>
       <td class="cell_left">
-        <?php echo h($tally_info['TallyDate']); ?>
+        <?php echo h($tally_info['tallyDate']); ?>
       </td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
         Tubs:
       </td>
       <td class="cell_left">
-        <?php echo h($lot_info['QtyTubs']); ?>
+        <?php echo h($lot_info['quantityOfTubs']); ?>
       </td>
       <td>
 
@@ -219,13 +219,13 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
             </td>
             <tr>
             <td>
-              <input type="text" id="mRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['Mutilation']; ?>" readonly style="border:0">
+              <input type="text" id="mRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['mutilation']; ?>" readonly style="border:0">
             </td>
             <td>
-              <input type="text" id="pRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['Plating']; ?>" readonly style="border:0">
+              <input type="text" id="pRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['plating']; ?>" readonly style="border:0">
             </td>
             <td>
-              <input type="text" id="xRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['Mixed']; ?>" readonly style="border:0">
+              <input type="text" id="xRunningTotal" class="qtyDisplay" value="<?php echo $tally_info['mixed']; ?>" readonly style="border:0">
             </td>
             <td></td>
             <td>
@@ -298,9 +298,9 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 var tallyId = <?php echo $tally_id; ?>; // transfer ID from PHP to JS
 var partsPerBox = <?php echo h($part_info['perBox']); ?>;
 var lastKeyPressed = []; // used for undo operation
-var mt = <?php echo $tally_info['Mutilation']; ?>;
-var pt = <?php echo $tally_info['Plating']; ?>;
-var xt = <?php echo $tally_info['Mixed']; ?>;
+var mt = <?php echo $tally_info['mutilation']; ?>;
+var pt = <?php echo $tally_info['plating']; ?>;
+var xt = <?php echo $tally_info['mixed']; ?>;
 var totalParts;
 var totalGoodParts = <?php echo h($total_boxes['count(*)']) * h($part_info['perBox']); ?>;
 var totalBadTarget = document.getElementById("totalBad");
@@ -387,18 +387,18 @@ function dbUpdate (tally, char, inc) {
 
 
           // inserting updated qty value on page
-        if ('Mutilation' in returndObj) {
-          // console.log("Mutilation");
-          document.getElementById("mRunningTotal").value = returndObj.Mutilation;
-          mt = returndObj.Mutilation;
-        } else if ('Plating' in returndObj) {
-          // console.log("Plating");
-          document.getElementById("pRunningTotal").value = returndObj.Plating;
-          pt = returndObj.Plating;
-        } else if ('Mixed' in returndObj) {
-          // console.log("Mixed");
-          document.getElementById("xRunningTotal").value = returndObj.Mixed;
-          xt = returndObj.Mixed;
+        if ('mutilation' in returndObj) {
+          // console.log("mutilation");
+          document.getElementById("mRunningTotal").value = returndObj.mutilation;
+          mt = returndObj.mutilation;
+        } else if ('plating' in returndObj) {
+          // console.log("plating");
+          document.getElementById("pRunningTotal").value = returndObj.plating;
+          pt = returndObj.plating;
+        } else if ('mixed' in returndObj) {
+          // console.log("mixed");
+          document.getElementById("xRunningTotal").value = returndObj.mixed;
+          xt = returndObj.mixed;
         } else {
           alert ("There was a problem with updating quantities");
         }

@@ -21,7 +21,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
    <option value="" disabled selected>- Select -</option>
 
    <?php while($table = mysqli_fetch_assoc($table_list)) { ?>
-   <option value="<?php echo h($table['table_num']); ?>"><?php echo h($table['table_num']); ?></option>
+   <option value="<?php echo h($table['tableNumber']); ?>"><?php echo h($table['tableNumber']); ?></option>
    <?php } ?>
           </select>
 

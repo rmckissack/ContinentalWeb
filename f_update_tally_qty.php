@@ -25,7 +25,7 @@ if (!$_GET['tallyId']) {
     // echo ("sql statement" . $sql);
     $sql .= $category . " = " . $category . " + " . $change;
     // echo ("sql statement" . $sql);
-    $sql .= " WHERE TallyID=" . $tallyId;
+    $sql .= " WHERE tallyId=" . $tallyId;
   
     echo ("db statement" . $db . "\n");
     echo ("sql statement" . $db . "\n" . $sql . "\n");
@@ -48,7 +48,7 @@ if (!$_GET['tallyId']) {
     global $db;
   
     $sql = "SELECT " . db_escape($db, $category) . " FROM TALLY ";
-    $sql .= "WHERE TallyID='" . db_escape($db, $tallyId) . "';";
+    $sql .= "WHERE tallyId='" . db_escape($db, $tallyId) . "';";
   
   $item_result = mysqli_query($db, $sql);
   confirm_result_set($item_result);

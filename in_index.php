@@ -36,10 +36,10 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
       <?php while($inbound = mysqli_fetch_assoc($inbound_set)) { ?>
         <tr>
-          <td><?php echo h($inbound['InDate']); ?></td>
+          <td><?php echo h($inbound['inDate']); ?></td>
           <td><a class="action" href="<?php echo 'in_show_inbound_detail.php?id=' . h(u($inbound['inboundBOL'])); ?>"><?php echo h($inbound['inboundBOL']); ?></a></td>
-          <td><?php echo h($inbound['TripNum']); ?></td>
-          <td><?php echo h($inbound['Note']); ?></td>
+          <td><?php echo h($inbound['tripNumber']); ?></td>
+          <td><?php echo h($inbound['note']); ?></td>
 
           <td><a class="action" href="<?php echo 'in_show_inbound_detail.php?id=' . h(u($inbound['inboundBOL'])); ?>">View</a></td>
           <td><a class="action" href="<?php echo 'in_edit.php?id=' . h(u($inbound['inboundBOL'])); ?>">Edit</a></td>

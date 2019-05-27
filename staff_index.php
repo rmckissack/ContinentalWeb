@@ -22,13 +22,13 @@ include('staff_header.php');
 
     <?php while($item = mysqli_fetch_assoc($item_set)) { ?>
       <tr>
-        <td><a class="action" href="<?php echo 'in_show_inbound_detail.php?id=' . h(u($item['inboundBOL'])); ?>" title="Select to view Bill of Laden for this lot."><?php echo h($item['InDate']); ?></a></td>
-        <td><?php echo h($item['PartNum']); ?></td>
-        <td><a class="action" href="<?php echo 'in_edit_item.php?id=' . h(u($item['inboundBOL'])) . '&lot=' . h(u($item['LotNum'])); ?>" title="Select to view or edit details for this lot."><?php echo h($item['LotNum']); ?></a></td>
-        <td><?php echo h($item['PoNum']); ?></td>
-        <td><?php echo h($item['QtyTubs']); ?></td>
-        <td><?php echo h($item['QtySkids']); ?></td>
-        <td><?php echo h($item['QtyBoxes']); ?></td>
+        <td><a class="action" href="<?php echo 'in_show_inbound_detail.php?id=' . h(u($item['inboundBOL'])); ?>" title="Select to view Bill of Laden for this lot."><?php echo h($item['inDate']); ?></a></td>
+        <td><?php echo h($item['partNumber']); ?></td>
+        <td><a class="action" href="<?php echo 'in_edit_item.php?id=' . h(u($item['inboundBOL'])) . '&lot=' . h(u($item['lotNumber'])); ?>" title="Select to view or edit details for this lot."><?php echo h($item['lotNumber']); ?></a></td>
+        <td><?php echo h($item['poNumber']); ?></td>
+        <td><?php echo h($item['quantityOfTubs']); ?></td>
+        <td><?php echo h($item['quantityOfSkids']); ?></td>
+        <td><?php echo h($item['quantityOfBoxes']); ?></td>
         <td><?php echo h($item['dueDate']) == '0000-00-00' ? '' : h($item['dueDate']) ; ?></td>
         <td><?php echo h($item['hotList']) == '1' ? '<img src="images/hot.png" alt="Hot List" style="width:40px;height:40px;"> ' : ''; ?></td>
       </tr>

@@ -7,13 +7,13 @@ $incroment = e($_POST['incroment']);
 
 switch ($charCode) {
   case 109:
-    $category = "Mutilation";
+    $category = "mutilation";
     break;
   case 112:
-    $category = "Plating";
+    $category = "plating";
     break;
   case 120:
-    $category = "Mixed";
+    $category = "mixed";
     break;
 
   default:
@@ -26,7 +26,7 @@ function start_tally_time($tallyId, $sorterID, $startTime) {
   
   
   $sql = "INSERT INTO TALLY_TIME ";
-    $sql .= "(EmployeeID, startTime, TallyID) ";
+    $sql .= "(employeeId, startTime, tallyId) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $sorterID) . "',";
     $sql .= "'" . db_escape($db, $startTime) . "',";
@@ -46,7 +46,7 @@ function start_tally_time($tallyId, $sorterID, $startTime) {
 
   $sql = "UPDATE TALLY SET ";
   $sql .= $category . "= " . $category . " +" . $incroment;
-  $sql .= " WHERE TallyID= " . $tallyId;
+  $sql .= " WHERE tallyId= " . $tallyId;
   $result = mysqli_query($db, $sql);
   // For UPDATE statements, $result is true/false
   if($result) {

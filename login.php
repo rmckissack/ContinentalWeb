@@ -17,7 +17,7 @@ function problem($message)
 if(!$_POST) {
 
   $login = [];
-  $login['username'] = '';
+  $login['userName'] = '';
   $login['enteredPassword'] = '';
 
 
@@ -32,7 +32,7 @@ if(!$_POST) {
   $enteredPassword = e($_POST['enteredPassword']);
   $dbUserData = dbUserData($enteredUsername);
     if(!$dbUserData) {
-      problem("The username/password combination you entered are incorrect. ");
+      problem("The userName/password combination you entered are incorrect. ");
     }
   $firstName = $dbUserData['firstName'];
   $lastName = $dbUserData['lastName'];
@@ -45,7 +45,7 @@ if(!$_POST) {
   $passwrodMD5 =  md5($time . $enteredPassword . $dateAdded);
 
 if($dbPassword != $passwrodMD5) {
-  problem("The username/password combination you entered are incorrect. ");
+  problem("The userName/password combination you entered are incorrect. ");
 }
 else
 {
@@ -85,7 +85,7 @@ echo <<<HERELOGIN
 
       <dl>
         <dt>Username</dt>
-        <dd><input type="text" id="username" name="enteredUsername" autofocus /></dd>
+        <dd><input type="text" id="userName" name="enteredUsername" autofocus /></dd>
       </dl>
       <dl>
         <dt>Password</dt>

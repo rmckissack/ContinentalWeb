@@ -5,16 +5,16 @@ require_once('f_initialize.php');
 if(is_post_request()) {
 
   $in_item_update = [];
-  $in_item_update['inItemID'] = e($_POST['inItemID']);
-  $in_item_update['PoNum'] = e($_POST['PoNum']);
-  $in_item_update['QtyTubs'] = e($_POST['QtyTubs']);
-  $in_item_update['QtySkids'] = e($_POST['QtySkids']);
-  $in_item_update['QtyBoxes'] = e($_POST['QtyBoxes']);
+  $in_item_update['inItemId'] = e($_POST['inItemId']);
+  $in_item_update['poNumber'] = e($_POST['poNumber']);
+  $in_item_update['quantityOfTubs'] = e($_POST['quantityOfTubs']);
+  $in_item_update['quantityOfSkids'] = e($_POST['quantityOfSkids']);
+  $in_item_update['quantityOfBoxes'] = e($_POST['quantityOfBoxes']);
 
   $lot_update = [];
-  $lot_update['LotId'] = e($_POST['LotId']);
-  $lot_update['LotNum'] = e($_POST['LotNum']);
-  $lot_update['PartNum'] = e($_POST['PartNum']);
+  $lot_update['lotId'] = e($_POST['lotId']);
+  $lot_update['lotNumber'] = e($_POST['lotNumber']);
+  $lot_update['partNumber'] = e($_POST['partNumber']);
   $lot_update['dueDate'] = e($_POST['dueDate']);
   $lot_update['hotList'] = e($_POST['hotList']);
   $lot_update['completed'] = e($_POST['completed']);
@@ -31,12 +31,12 @@ if(is_post_request()) {
     redirect_to('sort_index.php');
   }
 
-  $LotNum = $_GET['id'];
-// echo $inboundBOL . " and " . $LotNum . "were received      ";
+  $lotNumber = $_GET['id'];
+// echo $inboundBOL . " and " . $lotNumber . "were received      ";
 // $inbound_head = find_inbound_by_bol($inboundBOL);
 }
 
-$item_set = find_inbound_items_by_lot($LotNum);
+$item_set = find_inbound_items_by_lot($lotNumber);
 ?>
 
 <?php $page_title = 'Edit Inbound Item'; ?>
@@ -46,36 +46,36 @@ $item_set = find_inbound_items_by_lot($LotNum);
 
   
   <div class="page new">
-    <h1 class="redFont">Details for Lot# <?php echo h($item_set['LotNum']); ?></h1>
+    <h1 class="redFont">Details for Lot# <?php echo h($item_set['lotNumber']); ?></h1>
     <h2>This Lot is on inbound BOL# <?php echo h($item_set['inboundBOL']); ?></h2>
-    <h2>Received on <?php echo h($item_set['InDate']); ?></h2>
+    <h2>Received on <?php echo h($item_set['inDate']); ?></h2>
 
       <!-- this input for BOL is just to pass the current bol to next page inside post request -->
 
 
     <dl>
       <dt>Part Number:</dt>
-      <dd><?php echo h($item_set['PartNum']); ?></dd>
+      <dd><?php echo h($item_set['partNumber']); ?></dd>
     </dl>
     <dl>
       <dt>Lot Number:</dt>
-      <dd><?php echo h($item_set['LotNum']); ?></dd>
+      <dd><?php echo h($item_set['lotNumber']); ?></dd>
     </dl>
     <dl>
       <dt>PO Number:</dt>
-      <dd><?php echo h($item_set['PoNum']); ?></dd>
+      <dd><?php echo h($item_set['poNumber']); ?></dd>
     </dl>
     <dl>
       <dt>Quantity of Tubs:</dt>
-      <dd><?php echo h($item_set['QtyTubs']); ?></dd>
+      <dd><?php echo h($item_set['quantityOfTubs']); ?></dd>
     </dl>
     <dl>
       <dt>Quantity of Skids:</dt>
-      <dd><?php echo h($item_set['QtySkids']); ?></dd>
+      <dd><?php echo h($item_set['quantityOfSkids']); ?></dd>
     </dl>
     <dl>
       <dt>Quantity of Boxes:</dt>
-      <dd><?php echo h($item_set['QtyBoxes']); ?></dd>
+      <dd><?php echo h($item_set['quantityOfBoxes']); ?></dd>
     </dl>
     <dl>
       <dt>Due Date:</dt>

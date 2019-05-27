@@ -15,7 +15,7 @@
   //   global $db;
   //
   //   $sql = "SELECT * FROM PART ";
-  //   $sql .= "ORDER BY PartNum ASC";
+  //   $sql .= "ORDER BY partNumber ASC";
   //   $result = mysqli_query($db, $sql);
   //   confirm_result_set($result);
   //   $auto_list = mysqli_fetch_assoc($result);
@@ -169,7 +169,7 @@ function insert_inbound($Inbound) {
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $Inbound['inDate']) . "',";
   $sql .= "'" . db_escape($db, $Inbound['inboundBOL']) . "',";
-  $sql .= "'" . db_escape($db, $Inbound['tripNum']) . "',";
+  $sql .= "'" . db_escape($db, $Inbound['tripNumber']) . "',";
   $sql .= "'" . db_escape($db, $Inbound['note']) . "')";
   $result = mysqli_query($db, $sql);
   // For INSERT statements, $result is true/false
@@ -190,7 +190,7 @@ function insert_inbound_item($new_item) {
   $sql .= "(inboundBOL, lotId, poNumber, quantityOfTubs, quantityOfSkids, quantityOfBoxes) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $new_item['inboundBOL']) . "',";
-  // $sql .= "'" . db_escape($db, $new_item['PartNum']) . "',";
+  // $sql .= "'" . db_escape($db, $new_item['partNumber']) . "',";
   $sql .= "'" . db_escape($db, $new_item['lotId']) . "',";
   $sql .= "'" . db_escape($db, $new_item['poNumber']) . "',";
   $sql .= "'" . db_escape($db, $new_item['quantityOfTubs']) . "',";
@@ -271,7 +271,7 @@ function find_inbound_items_by_BOL_and_lot($inboundBOL, $lotNumber) {
   // confirm_result_set($item_result);
   // return $item_result;
 }
-function find_by_lot($LotNum) {
+function find_by_lot($lotNumber) {
   global $db;
 
   $sql = "SELECT * FROM InWithLot ";
@@ -529,7 +529,7 @@ function update_employee($details) {
 function find_all_work_status() {
   global $db;
 
-  $sql = "SELECT * FROM WorkStatus ";
+  $sql = "SELECT * FROM workStatus ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
@@ -544,11 +544,11 @@ function all_sort_tables() {
   return $result;
 }
 
-function find_by_lot_id($LotId) {
+function find_by_lot_id($lotId) {
   global $db;
 
   $sql = "SELECT * FROM InWithLot ";
-  $sql .= "WHERE lotId='" . db_escape($db, $LotId) . "';";
+  $sql .= "WHERE lotId='" . db_escape($db, $lotId) . "';";
 
 $item_result = mysqli_query($db, $sql);
 confirm_result_set($item_result);
@@ -691,11 +691,11 @@ function insert_user($user) {
   }
 }
 
-function dbUserData($username) {
+function dbUserData($userName) {
   global $db;
 
   $sql = "SELECT * FROM Users ";
-  $sql .= "WHERE userName ='" . db_escape($db, $username) . "'";
+  $sql .= "WHERE userName ='" . db_escape($db, $userName) . "'";
 
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);

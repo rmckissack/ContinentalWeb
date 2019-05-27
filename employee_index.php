@@ -36,13 +36,13 @@ if($_SESSION['level'] !="9") {
 
       <?php while($employee = mysqli_fetch_assoc($employee_list)) { ?>
         <tr>
-          <td><?php echo h($employee['EmployeeID']); ?></td>
-          <td><a class="action" href="<?php echo 'employee_edit.php?id=' . h(u($employee['EmployeeID'])); ?>"><?php echo h($employee['LastName']) . ', ' . h($employee['FirstName']); ?></a></td>
-          <td><?php echo h($employee['CellPhone']); ?></td>
-          <td><?php echo h($employee['HomePhone']); ?></td>
-          <td><?php echo h($employee['StartDate']); ?></td>
-          <td><?php echo h($employee['dob']); ?></td>
-          <td><a class="action" href="<?php echo 'employee_edit.php?id=' . h(u($employee['EmployeeID'])); ?>">View/Edit</a></td>
+          <td><?php echo h($employee['employeeId']); ?></td>
+          <td><a class="action" href="<?php echo 'employee_edit.php?id=' . h(u($employee['employeeId'])); ?>"><?php echo h($employee['lastName']) . ', ' . h($employee['firstName']); ?></a></td>
+          <td><?php echo h($employee['cellPhone']); ?></td>
+          <td><?php echo h($employee['homePhone']); ?></td>
+          <td><?php echo h($employee['startDate']); ?></td>
+          <td><?php echo h($employee['dateOfBirth']); ?></td>
+          <td><a class="action" href="<?php echo 'employee_edit.php?id=' . h(u($employee['employeeId'])); ?>">View/Edit</a></td>
     	  </tr>
       <?php } ?>
   	</table>

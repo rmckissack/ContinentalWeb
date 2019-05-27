@@ -55,7 +55,7 @@ echo <<<HEREDOC
 <input type="text" name="lname" maxlength="25" placeholder="Last Name" required/>
 </p>
 <p><label class="oneForty">Email Address</label>
-<input type="email" name="email" placeholder="username@domain.com" required />
+<input type="email" name="email" placeholder="userName@domain.com" required />
 </p>
 <p><label class="oneForty">Telephone</label>
 <input type="text" name="telephone" />

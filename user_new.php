@@ -11,15 +11,15 @@ $date = (int) date("Ymd");
 
   // Handle form values sent by new.php
 $new_user=[];
-  $new_user['username'] = e($_POST['UserName']);
-  $new_user['firstName'] = e($_POST['FirstName']);
-  $new_user['lastName'] = e($_POST['LastName']);
-  $new_user['email'] = e($_POST['EmailAddress']);
+  $new_user['userName'] = e($_POST['userName']);
+  $new_user['firstName'] = e($_POST['firstName']);
+  $new_user['lastName'] = e($_POST['lastName']);
+  $new_user['email'] = e($_POST['emailAddress']);
   $new_user['dateAdded'] = $date;
   $new_user['time'] = $time;
-  $new_user['active'] = $_POST['Active'];
+  $new_user['active'] = $_POST['active'];
   $new_user['password'] = md5($time . $_POST['password'] . $date);
-  $new_user['level'] = e($_POST['AccessLevel']);
+  $new_user['level'] = e($_POST['accessLevel']);
 
 
 $result = insert_user($new_user);
@@ -27,14 +27,14 @@ $result = insert_user($new_user);
   redirect_to('administration.php');
 } else {
 
-  $UserName = '';
-  $FirstName = '';
-  $LastName = '';
-  $EmailAddress = '';
-  $DateAdded = '';
-  $Time = '';
-  $Active = '1';
-  $AccessLevel = '0';
+  $userName = '';
+  $firstName = '';
+  $lastName = '';
+  $emailAddress = '';
+  $dateAdded = '';
+  $time = '';
+  $active = '1';
+  $accessLevel = '0';
 
 }
 
@@ -73,26 +73,26 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
       </dl>
       <dl>
         <dt>Last Name</dt>
-        <dd><input type="text" maxlength="15" name="LastName" required /></dd>
+        <dd><input type="text" maxlength="15" name="lastName" required /></dd>
       </dl>
       <dl>
         <dt>First Name</dt>
-        <dd><input type="text" maxlength="15" name="FirstName" required/></dd>
+        <dd><input type="text" maxlength="15" name="firstName" required/></dd>
       </dl>
       <dl>
         <dt>Email Address</dt>
         <dd>
-          <input type="email" maxlength="25" name="EmailAddress"/>
+          <input type="email" maxlength="25" name="emailAddress"/>
         </dd>
       </dl>
       <dl>
         <dt>Active</dt>
-        <dd><input type="checkbox" id="Active" name="Active" value="1" <?php echo ($Active == 1 ? 'checked' : '');?>></dd>
+        <dd><input type="checkbox" id="Active" name="active" value="1" <?php echo ($Active == 1 ? 'checked' : '');?>></dd>
       </dl>
       <dl>
         <dt>Access Level</dt>
         <dd>
-          <select name="AccessLevel">
+          <select name="accessLevel">
             <option selected value="0">No Access</option>
             <option value="1">Customer Access</option>
             <option value="5">Employee Access</option>

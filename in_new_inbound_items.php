@@ -3,7 +3,7 @@
 
 // $id = isset($_GET['id']) ? $_GET['id'] : '1';
 // $inboundBOL = $_GET['inboundBOL'];
-// $InboundDate = $_GET['InDate'];
+// $InboundDate = $_GET['inDate'];
 $id = $_GET['id'];
 $thisBOL = $id;
 // echo $thisBOL;
@@ -11,8 +11,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $date = date('now');
   // $date = strtotime($date);
     $new_LOT = [];
-    $new_LOT['LotNum'] = e($_POST['LotNum'] ?? '');
-    $new_LOT['PartNum'] = e($_POST["PartNum"] ?? '');
+    $new_LOT['lotNumber'] = e($_POST['lotNumber'] ?? '');
+    $new_LOT['partNumber'] = e($_POST["partNumber"] ?? '');
     $new_LOT['dueDate'] = e($_POST["dueDate"] ?? '0000-00-00');
     $new_LOT['hotList'] = e($_POST["hotList"] ?? '');
     $new_LOT['completed'] = e($_POST["completed"] ?? '');
@@ -25,24 +25,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $new_item = [];
   $new_item['inboundBOL'] = e($_POST["inboundBOL"] ?? '');
-  $new_item['PartNum'] = e($_POST["PartNum"] ?? '');
-  $new_item['LotId'] = $lotID;
-  $new_item['PoNum'] = e($_POST['PoNum'] ?? '');
-  $new_item['QtyTubs'] = e($_POST['QtyTubs'] ?? '0');
-  $new_item['QtySkids'] = e($_POST['QtySkids'] ?? '0');
-  $new_item['QtyBoxes'] = e($_POST['QtyBoxes'] ?? '0');
+  $new_item['partNumber'] = e($_POST["partNumber"] ?? '');
+  $new_item['lotId'] = $lotID;
+  $new_item['poNumber'] = e($_POST['poNumber'] ?? '');
+  $new_item['quantityOfTubs'] = e($_POST['quantityOfTubs'] ?? '0');
+  $new_item['quantityOfSkids'] = e($_POST['quantityOfSkids'] ?? '0');
+  $new_item['quantityOfBoxes'] = e($_POST['quantityOfBoxes'] ?? '0');
 
 
     // moved this test to trenart test
 
-  // if($new_item['QtyTubs'] == '') {
-//   $new_item['QtyTubs'] = '0';
+  // if($new_item['quantityOfTubs'] == '') {
+//   $new_item['quantityOfTubs'] = '0';
 // }
-// if($new_item['QtySkids'] == '') {
-//   $new_item['QtySkids'] = '0';
+// if($new_item['quantityOfSkids'] == '') {
+//   $new_item['quantityOfSkids'] = '0';
 // }
-// if($new_item['QtyBoxes'] == '') {
-//   $new_item['QtyBoxes'] = '0';
+// if($new_item['quantityOfBoxes'] == '') {
+//   $new_item['quantityOfBoxes'] = '0';
 // }
 
 
@@ -56,12 +56,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 // var_dump($_SERVER);
   $new_item = [];
   $new_item['inboundBOL'] = $thisBOL;
-  $new_item['PartNum'] ='';
-  $new_item['LotId'] = '';
-  $new_item['PoNum'] = '';
-  $new_item['QtyTubs'] = '0';
-  $new_item['QtySkids'] = '0';
-  $new_item['QtyBoxes'] = '0';
+  $new_item['partNumber'] ='';
+  $new_item['lotId'] = '';
+  $new_item['poNumber'] = '';
+  $new_item['quantityOfTubs'] = '0';
+  $new_item['quantityOfSkids'] = '0';
+  $new_item['quantityOfBoxes'] = '0';
   $new_item['dueDate'] = '';
   $new_item['hotList'] = '0';
 }
@@ -104,13 +104,13 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
       <tr>
           <td>
-            <?php echo h($inbound['InDate']); ?>
+            <?php echo h($inbound['inDate']); ?>
           </td>
           <td>
             <?php echo h($inbound['inboundBOL']); ?>
           </td>
           <td>
-            <?php echo h($inbound['TripNum']); ?>
+            <?php echo h($inbound['tripNumber']); ?>
           </td>
           </tr>
     </table>
@@ -143,12 +143,12 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
           <?php
           while($item = mysqli_fetch_assoc($item_set)) {
             echo '<tr>';
-              echo '<td>' . h($item['PartNum']) .'</td>';
-              echo '<td>' . h($item['LotNum']) . '</td>';
-              echo '<td>' . h($item['PoNum']) . '</td>';
-              echo '<td>' . h($item['QtyTubs']) . '</td>';
-              echo '<td>' . h($item['QtySkids']) . '</td>';
-              echo '<td>' . h($item['QtyBoxes']) . '</td>';
+              echo '<td>' . h($item['partNumber']) .'</td>';
+              echo '<td>' . h($item['lotNumber']) . '</td>';
+              echo '<td>' . h($item['poNumber']) . '</td>';
+              echo '<td>' . h($item['quantityOfTubs']) . '</td>';
+              echo '<td>' . h($item['quantityOfSkids']) . '</td>';
+              echo '<td>' . h($item['quantityOfBoxes']) . '</td>';
 
               echo '<td>';
               if(h($item['dueDate']) == '0000-00-00') {
@@ -173,39 +173,39 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
           <tr>
 
               <td>
-              <input list="partNumbers" name="PartNum" autofocus required>
+              <input list="partNumbers" name="partNumber" autofocus required>
                 <datalist id="partNumbers">
                 <?php
                 $moreParts = find_all_parts();
                 while($mp = mysqli_fetch_assoc($moreParts)) {
-                  echo "\t\t\t\t<option value=\"" . $mp["PartNum"] . "\">\n";
+                  echo "\t\t\t\t<option value=\"" . $mp["partNumber"] . "\">\n";
 
                 }
                 ?>
                 </datalist>
 
-              <!-- <input type="text" name="PartNum" id="PartNum" autofocus required /> -->
+              <!-- <input type="text" name="partNumber" id="partNumber" autofocus required /> -->
             </td>
 
 
               <td>
-                <input type="text" name="LotNum" autocomplete="off" required pattern="[0-9]{7}">
+                <input type="text" name="lotNumber" autocomplete="off" required pattern="[0-9]{7}">
                 <!-- pattern limits the input to numbers only and a fixed length of 7 digits -->
               </td>
               <td>
-                <input type="text" name="PoNum" autocomplete="off" required pattern="[0-9]{7,8}">
+                <input type="text" name="poNumber" autocomplete="off" required pattern="[0-9]{7,8}">
                 <!-- pattern limits the input to numbers only and a fixed length of 7 or 8 digits
                   length is normally 7 but have had a couple that are 8 digits -->
               </td>
 
               <td>
-                <input class="qty" type="number" name="QtyTubs" autocomplete="off">
+                <input class="qty" type="number" name="quantityOfTubs" autocomplete="off">
               </td>
               <td>
-                <input class="qty" type="number" name="QtySkids" autocomplete="off">
+                <input class="qty" type="number" name="quantityOfSkids" autocomplete="off">
               </td>
               <td>
-                <input class="qty" type="number" name="QtyBoxes" autocomplete="off">
+                <input class="qty" type="number" name="quantityOfBoxes" autocomplete="off">
               </td>
               <td>
                 <input type="date" name="dueDate" >
@@ -230,15 +230,15 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
 <script>
 // $(function() {
-//       $("#PartNum").autocomplete({
+//       $("#partNumber").autocomplete({
 //         source: "autocomplete_parts.php",
 
 //     });
 // });
 
-// function validatePartNum() {
+// function validatepartNumber() {
 //     var array = $partsArray;
-//     var x = document.getElementById("PartNum").value;
+//     var x = document.getElementById("partNumber").value;
 //     if (array.includes(x)) {
 //         var answer = true;
 //       } else {
@@ -249,7 +249,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
 
 // window.onload = function() {
-//     document.getElementById("PartNum").focus();
+//     document.getElementById("partNumber").focus();
 // };
 </script>
 

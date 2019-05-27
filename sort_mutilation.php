@@ -10,7 +10,7 @@ function update_tally_qty($tallyId, $category, $change) {
   // echo ("sql statement" . $sql);
   $sql .= $category . " = " . $category . " + " . $change;
   // echo ("sql statement" . $sql);
-  $sql .= " WHERE TallyID=" . $tallyId;
+  $sql .= " WHERE tallyId=" . $tallyId;
 
   echo ("db statement" . $db . "\n");
   echo ("sql statement" . $db . "\n" . $sql . "\n");
