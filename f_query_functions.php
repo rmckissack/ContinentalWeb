@@ -5,6 +5,7 @@
 
     $sql = "SELECT * FROM Part ";
     $sql .= "ORDER BY partNumber ASC";
+    echo ("find_all_parts\n");
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
@@ -14,7 +15,7 @@
   // function autocomplete_parts() {
   //   global $db;
   //
-  //   $sql = "SELECT * FROM PART ";
+  //   $sql = "SELECT * FROM part ";
   //   $sql .= "ORDER BY partNumber ASC";
   //   $result = mysqli_query($db, $sql);
   //   confirm_result_set($result);
@@ -104,6 +105,7 @@
 
     $sql = "SELECT * FROM Photo ";
     $sql .= "WHERE partNumber='" . db_escape($db, $partNumber) . "'";
+    // echo ("Photo = " . $sql);
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $partResult = mysqli_fetch_array($result);
@@ -346,7 +348,7 @@ function update_inbound_lot($lot_update) {
   $sql .= "dueDate='" . db_escape($db, $lot_update['dueDate']) . "', ";
   $sql .= "hotList='" . db_escape($db, $lot_update['hotList']) . "', ";
   $sql .= "completed='" . db_escape($db, $lot_update['completed']) . "' ";
-  $sql .= "WHERE LOT.lotId='" . db_escape($db, $lot_update['lotId']) . "' ";
+  $sql .= "WHERE Lot.lotId='" . db_escape($db, $lot_update['lotId']) . "' ";
   $sql .= "LIMIT 1";
   $result = mysqli_query($db, $sql);
   // For INSERT statements, $result is true/false
@@ -537,8 +539,8 @@ function find_all_work_status() {
 
 function all_sort_tables() {
   global $db;
-
-  $sql = "SELECT * FROM SortTables ";
+echo ("Sort Tables\n");
+  $sql = "SELECT * FROM SortTable ";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
@@ -549,7 +551,7 @@ function find_by_lot_id($lotId) {
 
   $sql = "SELECT * FROM InWithLot ";
   $sql .= "WHERE lotId='" . db_escape($db, $lotId) . "';";
-
+// echo ("find_by_lot_id= " . $sql);
 $item_result = mysqli_query($db, $sql);
 confirm_result_set($item_result);
 $itemSet = mysqli_fetch_assoc($item_result);
@@ -586,8 +588,8 @@ function update_tally_qty($tallyId, $category, $change) {
   // echo ("sql statement" . $sql);
   $sql .= " WHERE tallyId=" . $tallyId;
 
-  echo ("db statement" . $db . "\n");
-  echo ("sql statement" . $db . "\n" . $sql . "\n");
+  // echo ("db statement" . $db . "\n");
+  // echo ("sql statement" . $db . "\n" . $sql . "\n");
 
   $result = mysqli_query($db, $sql);
   // For UPDATE statements, $result is true/false
@@ -717,7 +719,7 @@ function find_employee_time_by_tally_id($tally_id) {
 
 function lot_completed($lotId) {
   global $db;
-echo "lot completed";
+// echo "lot completed";
   $sql = "UPDATE Lot SET ";
   $sql .= "completed = '1' ";
   $sql .= "WHERE lotId = '" . $lotId . "' ";
@@ -731,7 +733,7 @@ echo "lot completed";
 
 function overrun($overrun, $tallyId) {
   global $db;
-echo "overrun" . $overrun;
+// echo "overrun" . $overrun;
   $sql = "UPDATE Tally SET ";
   $sql .= "overflow = '" . $overrun . "' ";
   $sql .= "WHERE tallyId = '" . $tallyId . "' ";
@@ -748,7 +750,7 @@ function employee_tally_list($tally_id) {
 global $db;
 
 $sql = "SELECT TallyTime.timeId, TallyTime.employeeId, TallyTime.startTime, TallyTime.stopTime, TallyTime.tallyId, Employee.employeeId, ";
-$sql .= "CONCAT_WS (',', `lastName`, `firstName`) AS `wholeName` "; 
+$sql .= "CONCAT_WS (',', `lastName`, `firstName`) AS `wholeName` ";
 $sql .= "FROM Employee ";
 $sql .= "INNER JOIN TallyTime ON TallyTime.employeeId=Employee.employeeId ";
 $sql .= "WHERE TallyTime.tallyId = '" . $tally_id . "' ";

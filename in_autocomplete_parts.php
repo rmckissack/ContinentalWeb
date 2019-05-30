@@ -6,7 +6,7 @@
 $searchTerm = $_GET['term'];
 
 // Get matched data from parts table
-$query = $db->query("SELECT * FROM PART WHERE partNumber LIKE '".$searchTerm."%' ORDER BY partNumber ASC");
+$query = $db->query("SELECT * FROM part WHERE partNumber LIKE '".$searchTerm."%' ORDER BY partNumber ASC");
 
 // Generate parts data array
 $part_list = array();

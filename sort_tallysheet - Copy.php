@@ -190,7 +190,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
     <!-- <table class="tally_part_tbl">
       <tr>
-    Input row headings for LOT & Part info
+    Input row headings for Lot & Part info
         <th>Lot Number</th>
         <th>Part Number</th>
         <th>Box Size</th>

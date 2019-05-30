@@ -22,7 +22,7 @@ switch ($charCode) {
 
 global $db;
 
-  $sql = "UPDATE TALLY SET ";
+  $sql = "UPDATE Tally SET ";
   $sql .= $category . "= " . $category . " +" . $incroment;
   $sql .= " WHERE tallyId= " . $tallyId;
   $result = mysqli_query($db, $sql);

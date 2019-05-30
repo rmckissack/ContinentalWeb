@@ -6,7 +6,7 @@ function update_tally_qty($tallyId, $category, $change) {
   global $db;
 
   // echo ("SRB seaperation complete" . $tallyId . $category . $change . " XXX");
-  $sql = "UPDATE TALLY SET ";
+  $sql = "UPDATE Tally SET ";
   // echo ("sql statement" . $sql);
   $sql .= $category . " = " . $category . " + " . $change;
   // echo ("sql statement" . $sql);

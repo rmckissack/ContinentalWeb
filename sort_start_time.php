@@ -25,7 +25,7 @@ function start_tally_time($tallyId, $sorterID, $startTime) {
     global $db;
   
   
-  $sql = "INSERT INTO TALLY_TIME ";
+  $sql = "INSERT INTO TallyTime ";
     $sql .= "(employeeId, startTime, tallyId) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $sorterID) . "',";
@@ -44,7 +44,7 @@ function start_tally_time($tallyId, $sorterID, $startTime) {
     }
   }
 
-  $sql = "UPDATE TALLY SET ";
+  $sql = "UPDATE Tally SET ";
   $sql .= $category . "= " . $category . " +" . $incroment;
   $sql .= " WHERE tallyId= " . $tallyId;
   $result = mysqli_query($db, $sql);

@@ -13,14 +13,14 @@ if(is_post_request()) {
 
   // testing to see if lot should be marked as closed
   if(!isset($_POST['overrun']) || trim($_POST['overrun']) == '') {
-  // if this is true move on to redirect 
+  // if this is true move on to redirect
   } else {
     overrun($overrun, $tally_id);
     lot_completed($selected_lot);
   }
-  
+
   redirect_to('sort_index2.php?table=' . $selected_table);
-} 
+}
 
 
 
@@ -30,7 +30,7 @@ $part_info = find_part_by_id($lot_info['partNumber']); // just so we can display
 $tally_info = find_tally_by_id($tally_id);
 $photos = find_part_photos($lot_info['partNumber']);
 $total_boxes = find_box_qty($tally_id);
-$tally_sorter_time = employee_tally_list($tally_id);
+// $tally_sorter_time = employee_tally_list($tally_id);
 $time_id_list = [];
 // print_r ($lot_info);
 $boxTotal = '0';
@@ -188,7 +188,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 
 
 
-    
+
 
   <div id="additem">
   <!-- <h1>Tally ID: </h1> -->
@@ -215,7 +215,7 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
               <form action="<?php $thisScript; ?>" method="post" autocomplete="off">
               <input type="number" id="overrun" name="overrun" placeholder="Overflow Parts" min="0">
               <span class="tooltiptext">ONLY put a number in here if this is the end of the lot !!</span>
-              
+
             </td>
             <tr>
             <td>
@@ -230,8 +230,8 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
             <td></td>
             <td>
               <input type="text" id="bRunningTotal" class="qtyDisplay" value="<?php echo $total_boxes['count(*)']; ?>" readonly style="border:0">
-            </td> 
-            <td><input type="submit" value="Click to Close"></td>                 
+            </td>
+            <td><input type="submit" value="Click to Close"></td>
           </tr>
         </table>
 
@@ -239,58 +239,57 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
 </div>
 
 
-
-<div class="additem">
-<h2>Active Sorters:<!-- <button onclick="window.location.href = 'sort_add_sorter.php';">Add Sorter</button> --> </h2>
+<!-- <div class="additem"> -->
+<!-- <h2>Active Sorters: <button onclick="window.location.href = 'sort_add_sorter.php';">Add Sorter</button> </h2> -->
 
     <!-- <form id="addEmployee" action="<?php $thisScript; ?>" method="post" autocomplete="off"> -->
 
-      <table class="list">
-        <tr>
+      <!-- <table class="list"> -->
+        <!-- <tr> -->
         <!-- Input row headings   -->
-          <th>Name</th>
-          <th></th>
-          <th>Start</th>
-          <th></th>
-          <th>Stop</th>
-          <th>Total</th>
-        </tr>
+          <!-- <th>Name</th> -->
+          <!-- <th></th> -->
+          <!-- <th>Start</th> -->
+          <!-- <th></th> -->
+          <!-- <th>Stop</th> -->
+          <!-- <th>Total</th> -->
+        <!-- </tr> -->
         <?php
-        while($sorter = mysqli_fetch_assoc($tally_sorter_time)) {
-          echo '<tr>';
-            echo '<td>' . h($sorter['whole_name']) .'</td>';
-            echo '<td></td>';
-            echo '<td>' . date( "h:i a", strtotime(h($sorter['startTime']))) . '</td>';
-            echo '<td></td>';
+        // while($sorter = mysqli_fetch_assoc($tally_sorter_time)) {
+          // echo '<tr>';
+            // echo '<td>' . h($sorter['whole_name']) .'</td>';
+            // echo '<td></td>';
+            // echo '<td>' . date( "h:i a", strtotime(h($sorter['startTime']))) . '</td>';
+            // echo '<td></td>';
 
-            echo '<td>';
-            if(!(h($sorter['stopTime']))) {
-              echo "Sorting!";
-            }
-            else {
-              echo date( "h:i a", strtotime(h($sorter['stopTime'])));
-            }
-              
-            echo '</td>';
-            
-            echo '<td> 
-            <button onclick="time_stop(' . h($sorter['timeId']) . ')">Say Hello</button>
-            
-            </td>';
+            // echo '<td>';
+            // if(!(h($sorter['stopTime']))) {
+              // echo "Sorting!";
+            // }
+            // else {
+              // echo date( "h:i a", strtotime(h($sorter['stopTime'])));
+            // }
 
-          echo '</tr>';
-          array_push($time_id_list, h($sorter['timeId']));
-          
-        }
-      ?> 
+            // echo '</td>';
+
+            // echo '<td>
+            // <button onclick="time_stop(' . h($sorter['timeId']) . ')">Say Hello</button>
+
+            // </td>';
+
+          // echo '</tr>';
+          // array_push($time_id_list, h($sorter['timeId']));
+
+        // }
+      ?>
 
                 <!-- Input fields for items -->
 
-        
-      </table>
+
+      <!-- </table> -->
 
 
-    </div>
+    <!-- </div> -->
 
 
 

@@ -12,7 +12,7 @@ function insert_tally_sheet($selected_lot_id, $selected_table, $date) {
   $sql .= "'" . db_escape($db, $date) . "');";
 
 
-//  echo "insert_tally_sheet" . $sql;
+ echo "insert_tally_sheet" . $sql;
   $result = mysqli_query($db, $sql);
   // For INSERT statements, $result is true/false
   if($result) {

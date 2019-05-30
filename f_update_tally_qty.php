@@ -21,7 +21,7 @@ if (!$_GET['tallyId']) {
     global $db;
     
     // echo ("SRB seaperation complete" . $tallyId . $category . $change . " XXX");
-    $sql = "UPDATE TALLY SET ";
+    $sql = "UPDATE Tally SET ";
     // echo ("sql statement" . $sql);
     $sql .= $category . " = " . $category . " + " . $change;
     // echo ("sql statement" . $sql);
@@ -47,7 +47,7 @@ if (!$_GET['tallyId']) {
   function find_tally_qty($tallyId, $category) {
     global $db;
   
-    $sql = "SELECT " . db_escape($db, $category) . " FROM TALLY ";
+    $sql = "SELECT " . db_escape($db, $category) . " FROM Tally ";
     $sql .= "WHERE tallyId='" . db_escape($db, $tallyId) . "';";
   
   $item_result = mysqli_query($db, $sql);
