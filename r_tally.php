@@ -95,11 +95,11 @@ if($_SESSION['level'] !="9" && $_SESSION['level'] !="5") {
       <input type="radio" name="complete" value="1" >Completed<br>
       </dd>
     </dl>
-    <dl>
+    <!-- <dl>
         <dt>Download as CSV:</dt>
         <dd><input type="hidden" id="csv" name="csv" value="0"/>
           <input type="checkbox" id="csv" name="csv" value="1"/></dd>
-      </dl>
+      </dl> -->
 
 
 

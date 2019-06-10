@@ -12,38 +12,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   // $date = strtotime($date);
     $new_LOT = [];
     $new_LOT['lotNumber'] = e($_POST['lotNumber'] ?? '');
+    $new_LOT['poNumber'] = e($_POST['poNumber'] ?? '');
     $new_LOT['partNumber'] = e($_POST["partNumber"] ?? '');
     $new_LOT['dueDate'] = e($_POST["dueDate"] ?? '0000-00-00');
     $new_LOT['hotList'] = e($_POST["hotList"] ?? '');
     $new_LOT['completed'] = e($_POST["completed"] ?? '');
 
-    // moved this test to trenart test
-    // if($new_LOT['dueDate'] == '') {
-    //   $new_LOT['dueDate'] = '0000-00-00';
-    // }
+
     $lotID = insert_LOT($new_LOT);
 
   $new_item = [];
   $new_item['inboundBOL'] = e($_POST["inboundBOL"] ?? '');
   $new_item['partNumber'] = e($_POST["partNumber"] ?? '');
   $new_item['lotId'] = $lotID;
-  $new_item['poNumber'] = e($_POST['poNumber'] ?? '');
   $new_item['quantityOfTubs'] = e($_POST['quantityOfTubs'] ?? '0');
   $new_item['quantityOfSkids'] = e($_POST['quantityOfSkids'] ?? '0');
   $new_item['quantityOfBoxes'] = e($_POST['quantityOfBoxes'] ?? '0');
 
 
-    // moved this test to trenart test
-
-  // if($new_item['quantityOfTubs'] == '') {
-//   $new_item['quantityOfTubs'] = '0';
-// }
-// if($new_item['quantityOfSkids'] == '') {
-//   $new_item['quantityOfSkids'] = '0';
-// }
-// if($new_item['quantityOfBoxes'] == '') {
-//   $new_item['quantityOfBoxes'] = '0';
-// }
 
 
 
@@ -58,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $new_item['inboundBOL'] = $thisBOL;
   $new_item['partNumber'] ='';
   $new_item['lotId'] = '';
-  $new_item['poNumber'] = '';
+  // $new_item['poNumber'] = '';
   $new_item['quantityOfTubs'] = '0';
   $new_item['quantityOfSkids'] = '0';
   $new_item['quantityOfBoxes'] = '0';

@@ -189,12 +189,12 @@ function insert_inbound_item($new_item) {
   global $db;
 
   $sql = "INSERT INTO InItems ";
-  $sql .= "(inboundBOL, lotId, poNumber, quantityOfTubs, quantityOfSkids, quantityOfBoxes) ";
+  $sql .= "(inboundBOL, lotId, quantityOfTubs, quantityOfSkids, quantityOfBoxes) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $new_item['inboundBOL']) . "',";
   // $sql .= "'" . db_escape($db, $new_item['partNumber']) . "',";
   $sql .= "'" . db_escape($db, $new_item['lotId']) . "',";
-  $sql .= "'" . db_escape($db, $new_item['poNumber']) . "',";
+  // $sql .= "'" . db_escape($db, $new_item['poNumber']) . "',";
   $sql .= "'" . db_escape($db, $new_item['quantityOfTubs']) . "',";
   $sql .= "'" . db_escape($db, $new_item['quantityOfSkids']) . "',";
   $sql .= "'" . db_escape($db, $new_item['quantityOfBoxes']) . "');";
@@ -213,9 +213,10 @@ function insert_LOT($new_LOT) {
   global $db;
 
   $sql = "INSERT INTO Lot ";
-  $sql .= "(lotNumber, partNumber, dueDate, hotList, completed) ";
+  $sql .= "(lotNumber, poNumber, partNumber, dueDate, hotList, completed) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $new_LOT['lotNumber']) . "',";
+  $sql .= "'" . db_escape($db, $new_LOT['poNumber']) . "',";
   $sql .= "'" . db_escape($db, $new_LOT['partNumber']) . "',";
   $sql .= "'" . db_escape($db, $new_LOT['dueDate']) . "',";
   $sql .= "'" . db_escape($db, $new_LOT['hotList']) . "',";
@@ -319,7 +320,7 @@ function update_inbound_item($in_item_update) {
 
   $sql = "UPDATE InItems SET ";
   // $sql .= "inboundBOL='" . db_escape($db, $inbound['inboundBOL']) . "',";
-  $sql .= "poNumber='" . db_escape($db, $in_item_update['poNumber']) . "', ";
+  // $sql .= "poNumber='" . db_escape($db, $in_item_update['poNumber']) . "', ";
   $sql .= "quantityOfTubs='" . db_escape($db, $in_item_update['quantityOfTubs']) . "', ";
   $sql .= "quantityOfSkids='" . db_escape($db, $in_item_update['quantityOfSkids']) . "', ";
   $sql .= "quantityOfBoxes='" . db_escape($db, $in_item_update['quantityOfBoxes']) . "' ";
@@ -344,12 +345,15 @@ function update_inbound_lot($lot_update) {
   $sql = "UPDATE Lot SET ";
   // $sql .= "inboundBOL='" . db_escape($db, $inbound['inboundBOL']) . "',";
   $sql .= "lotNumber='" . db_escape($db, $lot_update['lotNumber']) . "', ";
+  $sql .= "poNumber='" . db_escape($db, $lot_update['poNumber']) . "', ";
   $sql .= "partNumber='" . db_escape($db, $lot_update['partNumber']) . "', ";
   $sql .= "dueDate='" . db_escape($db, $lot_update['dueDate']) . "', ";
   $sql .= "hotList='" . db_escape($db, $lot_update['hotList']) . "', ";
   $sql .= "completed='" . db_escape($db, $lot_update['completed']) . "' ";
   $sql .= "WHERE Lot.lotId='" . db_escape($db, $lot_update['lotId']) . "' ";
   $sql .= "LIMIT 1";
+
+  echo ($sql);
   $result = mysqli_query($db, $sql);
   // For INSERT statements, $result is true/false
   if($result) {
